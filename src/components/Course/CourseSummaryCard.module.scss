@@ -1,0 +1,35 @@
+.courseTitle {
+  color: var(--text-maroon);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 24px;
+  display: flex;
+  gap: 4px;
+}
+
+.actionLink {
+  color: var(--text-maroon);
+  font-size: 16px;
+  text-align: end;
+  padding-right: 24px;
+  cursor: default;
+
+  span:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+:global {
+  .ant-card-actions {
+    background-color: #f7f7f7 !important;
+  }
+  .ant-card-body {
+    height: calc(100% - 100px) !important;
+  }
+}
+
+.courseCard {
+  max-width: 400px;
+  border-radius: 0 0 8px 8px !important;
+}

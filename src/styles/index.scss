@@ -1,0 +1,26 @@
+@import '../../node_modules/antd/dist/reset.css';
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+@import 'utilities';
+@import 'palette';
+@import 'mixins';
+
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+  font-weight: $font-size-body !important;
+  font-size: $font-size-body;
+}
+
+div,
+p,
+span {
+  font-size: $font-size-body;
+}
+:root {
+  @include theme-custom-properties($light-theme);
+  @include custom-properties($color);
+}

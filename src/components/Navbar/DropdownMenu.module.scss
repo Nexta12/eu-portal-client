@@ -1,0 +1,17 @@
+.menuItem {
+  border-bottom: 1px solid #f0f2f3 !important;
+  padding: 20px !important;
+  border-radius: 0 !important;
+  &:hover {
+    color: #960524 !important;
+  }
+}
+
+.menuItemLabel {
+  font-weight: bold !important;
+}
+
+.dropdownOverlay {
+  width: 250px;
+  padding: 0 !important;
+}

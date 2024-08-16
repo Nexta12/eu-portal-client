@@ -1,0 +1,58 @@
+.navbarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  height: 64px;
+  background-color: var(--background-primary);
+  color: white;
+  width: 100%;
+}
+
+.navActionButtons {
+  display: flex;
+  gap: 16px;
+
+  .ghost {
+    border-color: var(--grey);
+    color: var(--text-white);
+    &:hover {
+      border-color: var(--grey) !important;
+      color: var(--text-white) !important;
+      background: var(--background-primary-hover) !important;
+    }
+  }
+}
+
+.navItemsSection {
+  display: flex;
+  align-items: center;
+  .logo {
+    display: none;
+  }
+
+  .navItems {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.stickyNavItemsSection {
+  @extend .navItemsSection;
+  .logo {
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+}
+
+.sticky {
+  background-color: #242424;
+  color: white;
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  height: 80px;
+}

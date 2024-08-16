@@ -1,0 +1,57 @@
+.iconBox {
+  width: 60px;
+  height: 36px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 5px;
+}
+
+.isCompleted {
+  color: var(--white);
+  background: var(--background-primary);
+}
+
+.isNotCompleted {
+  background: var(--background-secondary);
+}
+
+.img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1px solid var(--background-secondary);
+}
+
+.cardStudentData {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  border: 1px solid var(--background-secondary);
+}
+
+.profileCardFooter {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin: 0 -24px -24px;
+  border: 1px solid var(--background-secondary);
+  background: var(--background-grey);
+
+  div {
+    color: var(--text-maroon);
+    font-weight: bold;
+  }
+}
+
+.personalInfoCardHeader {
+  @extend .profileCardFooter;
+  justify-content: space-between;
+  margin: -24px -24px 0;
+  background: var(--black);
+  color: var(--white);
+
+  div {
+    color: var(--white);
+  }
+}

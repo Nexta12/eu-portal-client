@@ -1,0 +1,48 @@
+@import '../../styles/variables';
+
+.container {
+  background-color: #f4f4f5;
+  margin: 20px -80px 0;
+  @media screen and (max-width: $mobile-breakpoint) {
+    margin: 0 -20px;
+    padding: 20px;
+  }
+}
+
+.exploreContainer {
+  display: grid;
+  padding: 32px;
+  grid-template-columns: 600px 1fr;
+  gap: 1rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  grid-gap: 24px;
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+}
+
+.exploreText {
+  & div:nth-child(1) {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 40px;
+  }
+  & div:nth-child(2) {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-top: 16px;
+  }
+}
+
+.imgDiv {
+  & > img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}

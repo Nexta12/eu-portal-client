@@ -1,0 +1,85 @@
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  gap: 16px;
+  color: var(--black);
+  z-index: 15;
+  position: fixed;
+  top: 80px;
+  height: calc(100vh - 80px);
+  width: 100vw;
+  padding: 8px 16px;
+}
+
+.callNumber {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 8px 0;
+  text-align: center;
+  color: #960524;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 24px;
+
+  button {
+    width: 100%;
+    height: 40px;
+  }
+}
+
+.mobileNavItem {
+  & > * {
+    padding: 16px 32px;
+    border-bottom: 1px solid #ddd;
+    font-weight: 700;
+    margin: 0 -24px;
+    cursor: pointer;
+    position: relative;
+  }
+  & > div:nth-child(1) {
+    border-top: 1px solid #ddd;
+  }
+}
+
+:global {
+  .ant-collapse-header {
+    padding: 16px 32px !important;
+  }
+  .ant-collapse-item {
+    border: none !important;
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0 -40px;
+  }
+  .ant-collapse {
+    background: var(--white);
+    padding: 0 40px;
+  }
+  .ant-collapse-content-box {
+    padding: 0 16px !important;
+  }
+}
+
+.activePanel {
+  background-color: #242424;
+  :global(.ant-collapse-header) {
+    color: var(--white) !important;
+  }
+  transition: 0.5s ease-in-out;
+}
+
+.navItem {
+  padding: 16px 32px;
+  border-bottom: 1px solid #ddd;
+  font-weight: 500;
+
+  &:nth-last-child(1) {
+    border-bottom: none;
+  }
+}

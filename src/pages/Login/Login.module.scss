@@ -1,0 +1,11 @@
+.loginContainer {
+  width: 350px;
+  margin: 0 auto 35px;
+}
+
+.forgotPassword {
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

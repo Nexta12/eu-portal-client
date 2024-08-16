@@ -1,0 +1,91 @@
+@import '../../styles/variables.scss';
+.headerContainer {
+  width: 100%;
+}
+
+.dashboardHeaderContainer {
+  width: 100%;
+  grid-area: header;
+  background: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 24px;
+  padding-left: 4px;
+  box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  @media screen and (max-width: $mobile-breakpoint) {
+     height: 80px;
+     .logo{
+      width: 80px;
+      height: 40px;
+      object-fit: contain;
+     }
+    }
+
+  .dashboardHeaderInfo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0 10px;
+    .icon {
+      display: none;
+      @media screen and (max-width: $mobile-breakpoint) {
+        display: flex;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.userAvatar {
+  background: var(--background-primary);
+  vertical-align: middle;
+}
+
+.avatarButton {
+  height: 50px !important;
+  border-radius: 30px !important;
+  width: 70px !important;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .chevron {
+    font-size: 20px;
+    color: var(--background-primary);
+    &.open {
+      transform: rotateX(180deg);
+    }
+  }
+}
+
+.userInfo {
+  padding: 8px 0 !important;
+}
+
+.dropdown {
+  width: 250px;
+}
+
+.dropdownItem {
+  padding: 16px !important;
+  &:hover {
+    color: var(--color-primary) !important;
+  }
+}
+
+.userIntroSection {
+  &:hover {
+    background: none !important;
+  }
+}
+
+.userPicture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}

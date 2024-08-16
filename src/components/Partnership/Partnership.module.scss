@@ -1,0 +1,59 @@
+@import '../../styles/variables';
+
+.title {
+  font-size: 46px;
+}
+
+.subtitle {
+  width: 500px;
+  margin: 16px auto;
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    width: 100%;
+  }
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.partners {
+  overflow: hidden;
+  margin: 20px 0px;
+  display: flex;
+  white-space: nowrap;
+}
+
+.partners:hover .partner {
+  animation-play-state: paused;
+}
+
+.partner {
+  display: inline-block;
+  animation: 40s slide infinite linear;
+}
+
+.partnersImage {
+  height: 90px;
+  width: auto;
+  margin: 0 50px;
+  filter: grayscale(100%);
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    height: 50px;
+  }
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}

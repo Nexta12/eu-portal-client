@@ -1,0 +1,11 @@
+@import '../../styles/variables';
+
+.feesCardContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    grid-template-columns: 1fr;
+  }
+}

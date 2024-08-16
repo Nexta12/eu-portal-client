@@ -1,0 +1,88 @@
+@import '../../styles/variables.scss';
+.dashboardLayoutContainer {
+  display: grid;
+  grid-template-areas:
+    'header header header'
+    'sidebar content content';
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 1fr 12fr;
+  height: 100vh;
+  @media screen and (max-width: $mobile-breakpoint) {
+    grid-template-areas:
+      'header header header'
+      'content content content';
+    grid-template-columns: 1fr;
+  }
+}
+
+.dashboardCard {
+  width: 100%;
+  border: 1px solid var(--background-primary);
+  background: var(--background-grey);
+}
+
+.statisticsCard {
+  @extend .dashboardCard;
+  text-align: center;
+  width: 100%;
+
+  .icon {
+    color: var(--background-primary);
+  }
+}
+.academicWrapper {
+  width: 100%;
+}
+.academicsItem {
+  width: 100%;
+  border-top: 1px solid var(--background-secondary);
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @media screen and (max-width: $mobile-breakpoint) {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &:first-child {
+    border-top: none;
+  }
+}
+
+.notificationItem {
+  border-bottom: 2px solid var(--background-secondary);
+  padding: 10px 0;
+  display: grid;
+  grid-template-columns: 1fr 20fr;
+  gap: 10px;
+  width: 100%;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+%grid {
+  width: 100%;
+  display: grid;
+  gap: 20px;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.gridColumn2 {
+  @extend %grid;
+  grid-template-columns: 1fr 1fr;
+  @media screen and (max-width: $mobile-breakpoint) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gridColumn3 {
+  @extend %grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  @media screen and (max-width: $mobile-breakpoint) {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,39 @@
+%sharedFlex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fileUploaded {
+  padding: 20px;
+  border: 1px solid var(--background-secondary);
+  border-top-right-radius: 7px;
+  border-top-left-radius: 7px;
+}
+
+.card {
+  @extend .fileUploaded;
+  margin-top: 16px;
+  margin-bottom: 30px;
+
+  .rules {
+    background: var(--background-blue-gray);
+    color: var(--text-blue);
+    @extend %sharedFlex;
+  }
+}
+
+.allFiles {
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.file {
+  border: 1px solid var(--background-secondary);
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}

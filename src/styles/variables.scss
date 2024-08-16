@@ -1,0 +1,27 @@
+$base-unit: 10px;
+$mobile-breakpoint: 768px;
+
+// font sizes
+$font-size-bodyXS: 12px;
+$font-size-bodySmall: 14px;
+$font-size-body: 16px;
+$font-size-bodySemiLarge: 18px;
+$font-size-bodyLarge: 20px;
+$font-size-bodyXL: 24px;
+
+// colors
+$color-primary: #960524;
+$text-color-secondary: #817d7d;
+$background-secondary: #f0f0f0;
+
+// line heights
+$line-height-sm: 16px;
+$line-height-md: 24px;
+$line-height-lg: 32px;
+
+// font weights
+$font-weight-lighter: lighter;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 600;
+$font-weight-bolder: bolder;

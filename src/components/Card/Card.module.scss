@@ -1,0 +1,108 @@
+.miniCardContainer {
+  display: flex;
+  gap: 24px;
+
+  .card {
+    width: 360px;
+  }
+}
+
+.miniCard {
+  width: 360px;
+}
+
+.eventCardContainer {
+  background-image: linear-gradient(#f4f4f5, white);
+  padding: 16px 24px;
+
+  .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 20px;
+
+    & > div:nth-child(1) {
+      align-self: center;
+    }
+  }
+
+  .body {
+    margin-top: 24px;
+    .title {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .description {
+      font-size: 14px;
+      line-height: 24px;
+    }
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    border-top: 2px solid #dcd8d8;
+    margin-top: 20px;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .addToCalendar {
+      margin-top: 10px;
+      text-transform: capitalize;
+      padding: 10px;
+      border-radius: 4px;
+
+      &:hover {
+        background: #960524;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.5s ease-out 0s;
+      }
+    }
+  }
+}
+
+.dateWidget {
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  width: 60px;
+  height: 70px;
+  box-shadow: 0 0 50px #ccc;
+
+  .monthYear {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 4px;
+    color: white;
+    background-color: #960524;
+  }
+
+  .day {
+    font-size: 28px;
+    margin-top: 2px;
+  }
+}
+
+.weatherCardContainer {
+  width: 250px;
+  height: 130px;
+  background: #333333;
+  color: white;
+  padding: 24px 16px;
+
+  .weather {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 8px;
+    font-size: 20px;
+  }
+}

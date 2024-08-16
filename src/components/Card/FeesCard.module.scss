@@ -1,0 +1,19 @@
+@import 'IconCard.module';
+
+.cardContainer {
+  @extend .iconCardContainer;
+  cursor: pointer;
+
+  .feeLine {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #dccacd;
+    padding: 16px 0;
+  }
+
+  &:hover {
+    .feeLine {
+      border-top-color: #5d061c;
+    }
+  }
+}

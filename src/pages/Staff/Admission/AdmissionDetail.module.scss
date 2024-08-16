@@ -1,0 +1,19 @@
+@import '../../../styles/variables.scss';
+
+.personalInfo {
+  @media screen and (max-width: $mobile-breakpoint) {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}
+
+.info {
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.image {
+  width: 100%;
+  height: 200px;
+}

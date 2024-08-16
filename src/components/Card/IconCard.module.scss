@@ -1,0 +1,45 @@
+.iconCardContainer {
+  text-align: center;
+  padding: 80px 20px;
+  transition: all ease-in-out 0.3s;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  height: 470px;
+
+  &:hover {
+    background: #960524;
+    color: white;
+    padding-top: 70px;
+    transition: padding-top 0.3s ease-out 0s;
+    .icon {
+      background: white;
+      color: #960524;
+      box-shadow: -8px -8px #4c0c1a;
+    }
+  }
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
+  background: #960524;
+  color: white;
+  transition: all 0.3s ease-out 0s;
+  padding: 15px;
+  box-shadow: -8px -8px #ebd1d4;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.subtitle {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  font-style: italic;
+}
+.description {
+  font-size: 14px;
+  line-height: 24px;
+}

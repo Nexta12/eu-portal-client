@@ -1,0 +1,41 @@
+@import '../../styles/variables.scss';
+
+$inputHeight: 50px;
+
+.inputField {
+  height: $inputHeight;
+}
+
+.inputButton {
+  height: $inputHeight;
+}
+
+.datePicker {
+  height: $inputHeight;
+  width: 100%;
+}
+
+:global {
+  .ant-select-selector {
+    height: 100% !important;
+  }
+  .ant-select-selection-item {
+    line-height: 40px !important;
+  }
+  .ant-form-item-explain-error {
+    font-size: 14px;
+  }
+}
+
+.selectField {
+  width: 100%;
+  height: $inputHeight;
+}
+
+.inputButtonCompact {
+  width: 80%;
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    width: 100%;
+  }
+}

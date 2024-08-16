@@ -1,0 +1,17 @@
+@import '../../styles/variables';
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.actionButton {
+  width: 200px;
+  margin-top: 20px;
+  height: 50px;
+}

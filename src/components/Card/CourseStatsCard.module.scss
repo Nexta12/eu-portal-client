@@ -1,0 +1,27 @@
+.card {
+  :global {
+    .ant-card-head {
+      background: #f7f7f7;
+      color: var(--text-maroon);
+      font-size: 20px;
+    }
+  }
+}
+
+.stat {
+  div:nth-child(1) {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  div:nth-child(2) {
+    font-size: 14px;
+    font-weight: 400;
+    font-style: italic;
+  }
+}
+
+.statsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 20px;
+}

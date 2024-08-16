@@ -1,0 +1,30 @@
+.bannerContainer {
+  background: #242424;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+
+  .title {
+    display: flex;
+    img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    div {
+      font-size: 28px;
+    }
+  }
+}
+
+.phoneNumber {
+  color: white;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}

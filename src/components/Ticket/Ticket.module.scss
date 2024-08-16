@@ -1,0 +1,181 @@
+.messagesBody {
+    padding: 15px;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+
+    .messagesLeft {
+        flex: 3;
+        margin-right: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        border: 0.1px solid rgb(245, 241, 241);
+
+        .reportMainMessage {
+            padding: 20px;
+        }
+    }
+}
+
+.reportMessages {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.messagesRight {
+    flex: 1.5;
+}
+
+.messagesWrapper {
+    display: flex;
+    flex-direction: column;
+
+    .messagesBottom {
+        line-height: 30px;
+        border-radius: 10px;
+        font-weight: 500;
+        word-break: break-all;
+        padding: 20px;
+    }
+}
+
+.messagesTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0px;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+
+    span {
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+}
+
+.right {
+    font-size: 14px;
+}
+
+.userImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 1px solid lightcoral;
+    padding: 5px;
+}
+
+.admin {
+    background-color: #F8F9FA;
+}
+
+.messagesRight {
+    padding: 30px;
+    border-radius: 10px;
+    border: 0.1px solid rgb(245, 241, 241);
+    position: sticky;
+    top: 85px;
+
+    .itemBody {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .headerTitle {
+            font-weight: bold;
+            margin-right: 20px;
+        }
+    }
+
+    .title {
+        background-color: #F8F9FA;
+        display: flex;
+        align-items: center;
+        padding: 25px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        font-weight: bold;
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background-color: #fff;
+            color: #960524;
+            margin-right: 20px;
+        }
+    }
+
+    .itemBodyBtn {
+        margin: 20px 0px;
+        display: flex;
+        align-items: center;
+        Button {
+            margin-right: 5px;
+        }
+
+    }
+}
+ 
+.statusbtn {
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+.status-open {
+    background-color: green;
+    color: white;
+ 
+}
+
+.status-closed {
+    background-color: red;
+    color: white;
+
+}
+
+.status-awaiting-reply {
+    background-color: blue;
+    color: white;
+}
+
+.status-default {
+    background-color: lightgray;
+    color: black;
+
+}
+
+
+@media only screen and (max-width: 820px) {
+    .messagesBody {
+        flex-direction: column;
+
+    }
+
+    .reportMessages {
+        box-shadow: none;
+        border: 0.1px solid rgb(245, 241, 241);
+        margin-bottom: 15px;
+
+    }
+
+    .messagesRight {
+        position: relative;
+        box-shadow: none;
+        border: 0.1px solid rgb(245, 241, 241);
+        top: 5px;
+        padding: 30px;
+        width: 90vw;
+    }
+}

@@ -1,0 +1,22 @@
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingIcon {
+  margin-top: 20px;
+  animation: spin 2s linear infinite;
+}
+
+.depositButton {
+  width: 150px;
+  height: 50px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}

@@ -1,0 +1,13 @@
+@mixin theme-custom-properties($theme) {
+  @each $color-name, $values in $theme {
+    @each $shade-name, $shade-value in $values {
+      --#{$color-name}-#{$shade-name}: #{$shade-value};
+    }
+  }
+}
+
+@mixin custom-properties($color) {
+  @each $color-name, $color-value in $color {
+    --#{$color-name}: #{$color-value};
+  }
+}

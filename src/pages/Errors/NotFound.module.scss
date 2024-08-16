@@ -1,0 +1,25 @@
+.section {
+  padding: 24px 0;
+  text-align: center;
+}
+
+.section .error {
+  font-size: 150px;
+  color: var(--background-primary);
+  text-shadow: 1px 1px 1px #70041b, 2px 2px 1px #6b041a, 3px 3px 1px #570c1c, 4px 4px 1px #520314,
+    5px 5px 1px #69091d, 6px 6px 1px #69091d, 7px 7px 1px #69091d, 8px 8px 1px #69091d,
+    25px 25px 8px rgba(0, 0, 0, 0.2);
+}
+
+.page {
+  margin: 32px 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.backHome {
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all 0.2s linear;
+  height: 50px;
+}

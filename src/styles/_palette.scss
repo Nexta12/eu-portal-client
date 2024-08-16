@@ -1,0 +1,43 @@
+@import 'variables';
+
+$light-theme: (
+  'primary': (
+    'default': $color-primary,
+    'hover': gold
+  ),
+  'secondary': (
+    'default': blue,
+    'hover': red
+  ),
+  'text': (
+    'primary': #242424,
+    'secondary': $text-color-secondary,
+    'white': #fff,
+    'maroon': $color-primary,
+    'warning': #fbad13,
+    'success': #116714,
+    'red': #ff4d4f,
+    'link': #0c5cc7,
+    'blue': #426097
+  ),
+  'background': (
+    'primary': $color-primary,
+    'primary-hover': #a81132,
+    'success': #4caf50,
+    'secondary': #f0f0f0,
+    'grey': #f8f9fa,
+    'blue-gray': #d6e7ff
+  ),
+  'color': (
+    'primary': $color-primary,
+    'grey': #eeeeee,
+    'offwhite': #f0f0f0
+  )
+);
+
+$color: (
+  'white': #fff,
+  'black': #242424,
+  'grey': #eeeeee,
+  'mid-grey': #c0c0c0
+);

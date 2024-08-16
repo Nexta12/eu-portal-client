@@ -1,0 +1,51 @@
+@import '../../../styles/variables.scss';
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 50px auto 10px;
+  gap: 20px;
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    margin-top: 20px;
+    width: 100%;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: start;
+  width: 100%;
+  gap: 24px;
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.threeRowGrid {
+  @extend .grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  @media screen and (max-width: $mobile-breakpoint) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.actionButton {
+  width: 200px;
+  margin-top: 20px;
+  height: 50px;
+}
+.applicationBtnDiv {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    flex-direction: column;
+    align-items: center;
+  }
+}

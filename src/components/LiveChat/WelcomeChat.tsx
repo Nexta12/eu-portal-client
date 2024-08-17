@@ -11,6 +11,7 @@ import { Socket, io } from 'socket.io-client';
 import useSWRMutation from 'swr/mutation';
 import styles from './LiveChat.module.scss';
 
+
 const WelcomeChat = () => {
   const [form] = Form.useForm();
   const [chatterName, setChatterName] = useState<string>('');
@@ -19,7 +20,7 @@ const WelcomeChat = () => {
   const [message, setMessage] = useState<AlertMessage>({ error: null, success: null });
   const [socket, setSocket] = useState<Socket | null>(null);
   useEffect(() => {
-    const socketInstance = io('ws://localhost:4000');
+    const socketInstance = io('ws://185.170.196.112/:4000');
     setSocket(socketInstance);
     return () => {
       socketInstance.disconnect();

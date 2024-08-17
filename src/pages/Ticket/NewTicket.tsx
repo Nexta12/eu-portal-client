@@ -12,6 +12,7 @@ import { getAxiosError } from '@utils/http';
 import { Socket, io } from 'socket.io-client';
 import useSWRMutation from 'swr/mutation';
 
+
 const NewTicket = () => {
   const [form] = Form.useForm();
   const [ticketSubject, setTicketSubject] = useState<string>('');
@@ -20,7 +21,7 @@ const NewTicket = () => {
   const [message, setMessage] = useState<AlertMessage>({ error: null, success: null });
 
   useEffect(() => {
-    const socketInstance = io('ws://localhost:4000');
+    const socketInstance = io('ws://185.170.196.112/:4000');
     setSocket(socketInstance);
     return () => {
       socketInstance.disconnect();

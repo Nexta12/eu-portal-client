@@ -15,6 +15,7 @@ import { getAxiosError } from '@utils/http';
 import { Socket, io } from 'socket.io-client';
 import useSWRMutation from 'swr/mutation';
 
+
 const ViewTicket: React.FC = () => {
   const params = useParams<{ id: string }>();
   const [form] = Form.useForm();
@@ -24,7 +25,7 @@ const ViewTicket: React.FC = () => {
   const formRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const socketInstance = io('ws://localhost:4000');
+    const socketInstance = io('ws://185.170.196.112:4000');
     setSocket(socketInstance);
     return () => {
       socketInstance.disconnect();

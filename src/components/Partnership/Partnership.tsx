@@ -63,8 +63,7 @@ export const Partnership = () => (
   <div className="text-center mb-5">
     <div className={styles.title}>Partnerships</div>
     <div className={styles.subtitle}>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic iste nesciunt nihil quae
-      quisquam repudiandae.
+      Companies and Institutions that are currently in partnership with our school and projects
     </div>
     <div className={styles.partners}>
       <div className={styles.partner}>

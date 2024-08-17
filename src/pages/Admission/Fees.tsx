@@ -10,7 +10,7 @@ import styles from './Fees.module.scss';
 const programmeFees = [
   {
     cohort: Cohort.CERTIFICATE,
-    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed',
+    subtitle: 'Total amount payable for this Certificate',
     feesList: [
       { name: 'Application Fee', value: 100 },
       { name: 'Tuition Fee', value: 900 },
@@ -20,7 +20,7 @@ const programmeFees = [
   },
   {
     cohort: Cohort.DIPLOMA,
-    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed',
+    subtitle: 'Total amount of money payable for this Diploma',
     feesList: [
       { name: 'Application Fee', value: 100 },
       { name: 'Tuition Fee', value: 1100 },
@@ -30,7 +30,7 @@ const programmeFees = [
   },
   {
     cohort: Cohort.DEGREE,
-    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed',
+    subtitle: 'Total amount of money payable for this Degree',
     feesList: [
       { name: 'Application Fee', value: 100 },
       { name: 'Tuition Fee', value: 1300 },
@@ -47,7 +47,7 @@ const Fees = () => {
     <PageLayout siteTitle="Fees and Tuition">
       <div className="mb-3">
         <h1>Fees and Tuition</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed</p>
+        <p>Required amount to be paid based</p>
       </div>
       <div className={styles.feesCardContainer}>
         {programmeFees.map(({ cohort, subtitle, feesList }) => (

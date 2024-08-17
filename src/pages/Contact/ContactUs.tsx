@@ -8,9 +8,7 @@ const ContactUs = () => (
   <PageLayout siteTitle="Contact Us">
     <h1>Contact Us</h1>
     <div className="lh-md">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam aliquid aperiam
-      assumenda aut cupiditate dolor eos ex id maiores minus molestias odio, optio quas quo tempora
-      voluptate. Id, repudiandae?
+      Fill the form below and our dedicated team will get in touch with you as quickly as possible.
     </div>
     <FormWrapper className="mt-3">
       <div className={styles.grid}>

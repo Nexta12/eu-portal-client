@@ -1,31 +1,49 @@
 name: Deployment Workflow
-env:
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
 on:
   workflow_run:
     workflows: [ "Integration Workflow" ]
     types:
       - completed
-  push:
-    branches-ignore:
-      - main
+
 jobs:
   Deploy-Preview:
-    name: Deploy Preview to Vercel
+    name: Deploy Preview
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Install Vercel CLI
-        run: yarn add vercel@latest --global
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.yarn
+            ~/.cache
+            /www/wwwroot/CLIENTS/eu-africa-client/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
-      - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16' 
 
-      - name: Build Project Artifacts
-        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Set up SSH connection
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.USER_NAME }}
+          passphrase: ${{ secrets.PASSWORD }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            export PATH=$PATH:/www/server/nodejs/v14.17.6/bin
+            cd /www/wwwroot/CLIENTS/eu-africa-client
+            git pull origin main
+            yarn install --frozen-lockfile
+            yarn run build
+            pm2 start yarn --name eu-africa-client --start
+            pm2 startup

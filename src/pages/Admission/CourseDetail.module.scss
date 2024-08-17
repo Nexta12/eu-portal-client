@@ -11,6 +11,7 @@
   display: grid;
   grid-template-columns: 3fr 2fr;
   gap: 24px;
+  
 
   @media screen and (max-width: $mobile-breakpoint) {
     grid-template-columns: 1fr;

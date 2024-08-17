@@ -11,7 +11,6 @@ import { Socket, io } from 'socket.io-client';
 import useSWRMutation from 'swr/mutation';
 import styles from './LiveChat.module.scss';
 
-
 const WelcomeChat = () => {
   const [form] = Form.useForm();
   const [chatterName, setChatterName] = useState<string>('');

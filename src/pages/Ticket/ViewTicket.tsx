@@ -15,7 +15,6 @@ import { getAxiosError } from '@utils/http';
 import { Socket, io } from 'socket.io-client';
 import useSWRMutation from 'swr/mutation';
 
-
 const ViewTicket: React.FC = () => {
   const params = useParams<{ id: string }>();
   const [form] = Form.useForm();

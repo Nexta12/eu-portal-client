@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { LuTrash2 } from 'react-icons/lu';
 import { useNavigate } from 'react-router-dom';
 import { Alert, Button } from 'antd';
@@ -10,13 +10,13 @@ import { CustomModal } from '@components/Modal';
 import { AntTable } from '@components/Table';
 import { AlertMessage } from '@customTypes/general';
 import { MappedReport, Report, SupportTicketStatus } from '@customTypes/tickets';
+import { useSocket } from '@hooks/useSocket';
 import { paths } from '@routes/paths';
 import { colorPrimary } from '@styles/theme';
 import { formatErrors } from '@utils/errorFormatter';
 import { capitalizeWords, formatDate } from '@utils/helpers';
 import { getAxiosError } from '@utils/http';
 import { ColumnsType } from 'antd/es/table';
-import { Socket, io } from 'socket.io-client';
 
 const columns: ColumnsType<MappedReport> = [
   {
@@ -102,6 +102,7 @@ const columns: ColumnsType<MappedReport> = [
 ];
 
 const AdminTicketList = () => {
+  const socket = useSocket();
   const navigate = useNavigate();
   const {
     data: reports,
@@ -114,16 +115,7 @@ const AdminTicketList = () => {
   });
   const [message, setMessage] = useState<AlertMessage>({ error: null, success: null });
   const [isDeleting, setIsDeleting] = useState<string>('');
-  const [socket, setSocket] = useState<Socket | null>(null);
   const [openConfirmationModal, setOpenConfirmationModal] = useState(false);
-
-  useEffect(() => {
-    const socketInstance = io('ws://localhost:4000');
-    setSocket(socketInstance);
-    return () => {
-      socketInstance.disconnect();
-    };
-  }, []);
 
   const handleDeleteReport = async (id: string) => {
     try {

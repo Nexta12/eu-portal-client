@@ -1,6 +1,21 @@
 import React, { Key, ReactNode } from 'react';
-import { AiOutlineBook, AiOutlineHome, AiOutlineInbox, AiOutlineProfile, AiOutlineWallet } from 'react-icons/ai';
-import { BsBlockquoteLeft, BsBook, BsBookmarksFill, BsBorderWidth, BsCalendar3, BsPeople, BsPlusLg } from 'react-icons/bs';
+import {
+  AiOutlineBook,
+  AiOutlineHome,
+  AiOutlineInbox,
+  AiOutlineProfile,
+  AiOutlineWallet
+} from 'react-icons/ai';
+import {
+  BsBlockquoteLeft,
+  BsBook,
+  BsBookmarksFill,
+  BsBorderWidth,
+  BsCalendar3,
+  BsPeople,
+  BsPlusLg
+} from 'react-icons/bs';
+import { CiMail } from 'react-icons/ci';
 import { HiOutlineAcademicCap, HiOutlineDocumentText } from 'react-icons/hi';
 import { IoChatbubblesOutline } from 'react-icons/io5';
 import { LiaBullhornSolid } from 'react-icons/lia';
@@ -155,7 +170,8 @@ const getStaffSidebarItems = (
   navigate: NavigateFunction,
   setShowSidebar: (data: boolean) => void,
   ticketCount: number,
-  totalUnreadChats: number
+  totalUnreadChats: number,
+  unreadMessagesCount: number
 ): MenuProps['items'] => {
   const handleOnClick = (path: string) => {
     setShowSidebar(false);
@@ -223,6 +239,13 @@ const getStaffSidebarItems = (
       ]
     }),
     getItem({
+      label: 'Messages',
+      key: 'messages',
+      icon: <CiMail size={sideBarIconSize} />,
+      badge: <Badge count={unreadMessagesCount} style={{ backgroundColor: '#f5222d' }} />,
+      onClick: () => handleOnClick(paths.contactMessages)
+    }),
+    getItem({
       label: 'Events',
       key: 'events',
       icon: <BsBookmarksFill size={sideBarIconSize} />,
@@ -258,6 +281,7 @@ interface SidebarProps {
   showSidebar: boolean;
   setShowSidebar: (data: boolean) => void;
   ticketCount?: number;
+  unreadMessagesCount?: number;
   studentTicketCount?: number;
   totalUnreadChats?: number;
 }
@@ -267,6 +291,7 @@ export const Sidebar = ({
   showSidebar,
   setShowSidebar,
   ticketCount = 0,
+  unreadMessagesCount = 0,
   studentTicketCount = 0,
   totalUnreadChats = 0
 }: SidebarProps) => {
@@ -275,7 +300,13 @@ export const Sidebar = ({
   const getSidebarItemWithType = {
     application: getApplicationSidebarItems(navigate, setShowSidebar),
     user: getStudentSidebarItems(navigate, setShowSidebar, studentTicketCount),
-    staff: getStaffSidebarItems(navigate, setShowSidebar, ticketCount, totalUnreadChats)
+    staff: getStaffSidebarItems(
+      navigate,
+      setShowSidebar,
+      ticketCount,
+      totalUnreadChats,
+      unreadMessagesCount
+    )
   };
   const sidebarItems = getSidebarItemWithType[type] || [];
   const firstItemKey = sidebarItems.length > 0 ? sidebarItems[0]?.key : '';

@@ -14,7 +14,7 @@ import { EditNotification, NewNotification, Notifications } from '@pages/Announc
 import { Blogs, Categories, EditBlog, EditCategory, NewBlog, NewCategory } from '@pages/Blog';
 import BlogList from '@pages/Blog/BlogList';
 import SingleBlog from '@pages/Blog/SingleBlog';
-import { ContactUs } from '@pages/Contact';
+import { ContactUs, Messages, ViewContactMessage } from '@pages/Contact';
 import { CourseHistory, Enrolments, PreRegistration } from '@pages/Courses';
 import { Dashboard, DashboardHome } from '@pages/Dashboard';
 import { NotFound } from '@pages/Errors';
@@ -107,6 +107,8 @@ export const AppRoutes = () => (
         <Route path={paths.events} element={<Events />} />
         <Route path={paths.newEvent} element={<NewEvent />} />
         <Route path={`${paths.editEvent}/:id`} element={<EditEvent />} />
+        <Route path={paths.contactMessages} element={<Messages />} />
+        <Route path={`${paths.viewMessages}/:id`} element={<ViewContactMessage />} />
         <Route path={paths.notifications} element={<Notifications />} />
         <Route path={paths.newNotification} element={<NewNotification />} />
         <Route path={`${paths.editNotification}/:id`} element={<EditNotification />} />

@@ -8,7 +8,7 @@ import { SuccessResponse } from '@customTypes/general';
 import { Livechat } from '@customTypes/livechat';
 import { formatDate } from '@utils/helpers';
 import { getLocalStorageItem } from '@utils/localStorage';
-import { Socket, io } from 'socket.io-client';
+import { useSocket } from '@hooks/useSocket';
 import useSWRMutation from 'swr/mutation';
 import styles from './LiveChat.module.scss';
 
@@ -18,21 +18,13 @@ interface TypingStatus {
 }
 
 const MessengerBox = () => {
+  const socket = useSocket();
   const [form] = Form.useForm();
   const [chatMessage, setChatMessage] = useState<string>('');
   const [isTyping, setIsTyping] = useState<TypingStatus | null>(null);
   const chatUserJson = getLocalStorageItem('chatUser');
   const chatUser = chatUserJson ? JSON.parse(chatUserJson) : null;
   const chatContainerRef = useRef<HTMLDivElement>(null);
-  const [socket, setSocket] = useState<Socket | null>(null);
-
-  useEffect(() => {
-    const socketInstance = io('ws://localhost:4000');
-    setSocket(socketInstance);
-    return () => {
-      socketInstance.disconnect();
-    };
-  }, []);
 
   useEffect(() => {
     if (socket && chatUser?.userId) {

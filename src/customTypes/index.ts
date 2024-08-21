@@ -7,3 +7,4 @@ export * from './events';
 export * from './notifications';
 export * from './tickets';
 export * from './livechat';
+export * from './messages';

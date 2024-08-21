@@ -1,30 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Alert, Button, Form } from 'antd';
 import apiClient from '@api/apiClient';
 import { endpoints } from '@api/endpoints';
 import { FormWrapper, InputField } from '@components/Form';
 import { AlertMessage } from '@customTypes/general';
+import { useSocket } from '@hooks/useSocket';
 import { formatErrors } from '@utils/errorFormatter';
 import { getAxiosError } from '@utils/http';
 import { setLocalStorageItem } from '@utils/localStorage';
-import { Socket, io } from 'socket.io-client';
 import useSWRMutation from 'swr/mutation';
 import styles from './LiveChat.module.scss';
 
 const WelcomeChat = () => {
+  const socket = useSocket();
   const [form] = Form.useForm();
   const [chatterName, setChatterName] = useState<string>('');
   const [userEmail, setUserEmail] = useState<string>('');
   const [welcomeMessage, setWelcomeMessage] = useState<string>('');
   const [message, setMessage] = useState<AlertMessage>({ error: null, success: null });
-  const [socket, setSocket] = useState<Socket | null>(null);
-  useEffect(() => {
-    const socketInstance = io('ws://185.170.196.112/:4000');
-    setSocket(socketInstance);
-    return () => {
-      socketInstance.disconnect();
-    };
-  }, []);
+
   const { trigger, isMutating } = useSWRMutation(endpoints.joinChat, async (url) => {
     const res = await apiClient.post(url, { email: userEmail, name: chatterName, welcomeMessage });
     return res.data;

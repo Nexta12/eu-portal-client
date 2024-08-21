@@ -3,9 +3,9 @@ import { Outlet } from 'react-router-dom';
 import { DashboardHeader } from '@components/Header';
 import { Sidebar, SidebarType } from '@components/Sidebar';
 import { UserRole } from '@customTypes/user';
+import { useSocket } from '@hooks/useSocket';
 import useAuthStore, { LoggedInUser } from '@store/authStore';
 import { isApplicationInProgress } from '@utils/helpers';
-import { Socket, io } from 'socket.io-client';
 import styles from './Dashboard.module.scss';
 
 export const getUserType = (user: LoggedInUser): SidebarType => {
@@ -20,26 +20,20 @@ export const getUserType = (user: LoggedInUser): SidebarType => {
 };
 const Dashboard = () => {
   const { user } = useAuthStore();
+  const socket = useSocket();
   const sideBarType = user ? getUserType(user) : 'user';
   const [showSidebar, setShowSidebar] = useState(false);
-  const [socket, setSocket] = useState<Socket | null>(null);
   const [unreadChats, setUnreadChats] = useState<number>(0);
   const [unreadTickets, setUnreadTickets] = useState<number>(0);
+  const [unreadMessages, setUnreadMessages] = useState<number>(0);
   const [studentUnreadTickets, setStudentUnreadTickets] = useState<number>(0);
-
-  useEffect(() => {
-    const socketInstance = io('ws://localhost:4000');
-    setSocket(socketInstance);
-    return () => {
-      socketInstance.disconnect();
-    };
-  }, []);
 
   useEffect(() => {
     if (socket) {
       socket.emit('getUnreadChats');
       socket.emit('getStudentUnreadTickets', { data: user?.userId });
       socket.emit('getUnreadTickets');
+      socket.emit('getUnreadMessages');
     }
   }, [socket, user?.userId]);
 
@@ -59,12 +53,18 @@ const Dashboard = () => {
       socket.on('totalUnreadTickets', (data: number) => {
         setUnreadTickets(data);
       });
+
+      socket.on('totalUnreadMessages', (data: number) => {
+        setUnreadMessages(data);
+      });
+
       socket.on('totalStudentUnreadTickets', (data: number) => {
         setStudentUnreadTickets(data);
       });
     }
     return () => {
       socket?.off('totalUnreadTickets');
+      socket?.off('totalUnreadMessages');
       socket?.off('totalStudentUnreadTickets');
     };
   }, [socket]);
@@ -77,6 +77,7 @@ const Dashboard = () => {
         showSidebar={showSidebar}
         setShowSidebar={setShowSidebar}
         ticketCount={unreadTickets || 0}
+        unreadMessagesCount={unreadMessages || 0}
         studentTicketCount={studentUnreadTickets || 0}
         totalUnreadChats={unreadChats || 0}
       />

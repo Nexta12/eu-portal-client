@@ -10,6 +10,8 @@ export const paths = {
   admissionRequirements: '/admission-requirements',
   apply: '/apply',
   contactUs: '/contact-us',
+  contactMessages: '/dashboard/contact-messages',
+  viewMessages: '/dashboard/inquiry-message',
   login: '/login',
   privacyPolicy: '/privacy-policy',
   cookiePolicy: '/cookie-policy',
@@ -65,5 +67,6 @@ export const paths = {
   categories: '/dashboard/categories',
   newCategory: '/dashboard/new-category',
   editCategory: '/dashboard/edit-category',
-  liveChat: '/dashboard/live-chat'
+  liveChat: '/dashboard/live-chat',
+  developer: '/next-apps'
 };

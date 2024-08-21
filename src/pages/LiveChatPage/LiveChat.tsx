@@ -15,7 +15,7 @@ import { colorPrimary } from '@styles/theme';
 import { formatErrors } from '@utils/errorFormatter';
 import { formatDate } from '@utils/helpers';
 import { getAxiosError } from '@utils/http';
-import { Socket, io } from 'socket.io-client';
+import { useSocket } from '@hooks/useSocket';
 import useSWRMutation from 'swr/mutation';
 import userImage from '../Blog/user-img.png';
 import styles from './Chat.module.scss';
@@ -30,6 +30,7 @@ interface TypingStatus {
 }
 
 const LiveChat = () => {
+  const socket = useSocket();
   const [form] = Form.useForm();
   const [message, setMessage] = useState<AlertMessage>({ error: null, success: null });
   const [selectedChat, setSelectedChat] = useState<Livechat | null>(null);
@@ -39,17 +40,8 @@ const LiveChat = () => {
   const [isDeleting, setIsDeleting] = useState<string>('');
   const [openConfirmationModal, setOpenConfirmationModal] = useState(false);
   const [onlineUsers, setOnlineUsers] = useState<Set<string>>(new Set<string>());
-  const [socket, setSocket] = useState<Socket | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const { user } = authStore();
-
-  useEffect(() => {
-    const socketInstance = io('ws://localhost:4000');
-    setSocket(socketInstance);
-    return () => {
-      socketInstance.disconnect();
-    };
-  }, []);
 
   const { data: chatsHistoryResponse } = useSWR<SuccessResponse<Livechat[]>>(
     `${endpoints.getAllChatsHistory}`,

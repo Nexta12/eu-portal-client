@@ -65,5 +65,9 @@ export const endpoints = {
   getOneUserChatHistory: '/chats/chat-user',
   sendChat: '/chatmessages/reply',
   getAllChatsHistory: '/chats',
-  deleteChats: '/chats/user'
+  deleteChats: '/chats/user',
+  createContactMessage: '/contacts/create',
+  getAllContactMessage: '/contacts',
+  deleteContactMessage: '/contacts/delete',
+  replyContactMessage: '/contacts/reply'
 };

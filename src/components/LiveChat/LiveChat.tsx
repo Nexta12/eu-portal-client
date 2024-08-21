@@ -67,7 +67,7 @@ const LiveChat = () => {
           {chatUser && chatUser.role === 'chat' ? <MessengerBox /> : <WelcomeChat />}
           <div className={styles.chatBottom}>
             &copy; powered by
-            <a href="/" target="_blank">
+            <a href="/">
               Ernest apps
             </a>
           </div>

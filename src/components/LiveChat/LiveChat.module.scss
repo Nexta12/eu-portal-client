@@ -20,13 +20,17 @@
     display: flex;
     flex-direction: column;
 
+    .actionIcons {
+        text-align: right;
+    }
+
     button {
         border: none;
         background-color: transparent;
 
         .icon {
             border: none;
-            font-size: 40px;
+            font-size: 25px;
             cursor: pointer;
             float: right;
             color: #fff;

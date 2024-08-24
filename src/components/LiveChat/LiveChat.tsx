@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FiMinus } from 'react-icons/fi';
-import { IoChatbubblesOutline } from 'react-icons/io5';
+import { IoChatbubblesOutline, IoCloseSharp } from 'react-icons/io5';
 import { PageLayout } from '@components/Layout';
 import { getLocalStorageItem, removeLocalStorageItem } from '@utils/localStorage';
 import styles from './LiveChat.module.scss';
@@ -33,6 +33,13 @@ const LiveChat = () => {
     setIsChatMinimized(false);
   };
 
+  const closeChat = () => {
+    if (chatUserJson) {
+      removeLocalStorageItem('chatUser');
+      removeLocalStorageItem('token');
+    }
+  };
+
   const minimizeChatBox = () => {
     setIsChatMinimized(true);
     setIsChatOpen(false);
@@ -59,17 +66,21 @@ const LiveChat = () => {
       {isChatOpen && (
         <div className={styles.liveChat}>
           <div className={styles.chatTop}>
-            <button onClick={minimizeChatBox}>
-              <FiMinus className={styles.icon} title="Minimize" />
-            </button>
+            <div className={styles.actionIcons}>
+              <button onClick={minimizeChatBox}>
+                <FiMinus className={styles.icon} title="Minimize" />
+              </button>
+              <button onClick={closeChat}>
+                <IoCloseSharp className={styles.icon} title="Close Chat" />
+              </button>
+            </div>
+
             <p>EU Africa LiveChat</p>
           </div>
           {chatUser && chatUser.role === 'chat' ? <MessengerBox /> : <WelcomeChat />}
           <div className={styles.chatBottom}>
             &copy; powered by
-            <a href="/">
-              Ernest apps
-            </a>
+            <a href="/">Ernest apps</a>
           </div>
         </div>
       )}

@@ -31,7 +31,7 @@ const WelcomeChat = () => {
         return;
       }
       const response = await trigger();
-      setMessage({ error: null, success: 'Joined Chat, Please wait for available admin' });
+      setMessage({ error: null, success: 'Joined 😄 Please wait for any available staff' });
       form.resetFields();
       const details = response.data;
       const user = {

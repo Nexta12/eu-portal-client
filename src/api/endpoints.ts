@@ -22,6 +22,7 @@ export const endpoints = {
   staffs: '/staffs',
   newStaff: '/staffs/create',
   staffUpdate: '/staffs/update',
+  staffDelete: '/staffs/delete',
   getFaculties: '/faculties',
   createFaculty: '/faculties/create',
   updateFaculty: '/faculties/update',

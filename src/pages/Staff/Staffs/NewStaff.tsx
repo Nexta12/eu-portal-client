@@ -92,7 +92,7 @@ const NewStaff = () => {
         <Card className="width-100 p-1">
           <h2>Staff Information</h2>
           <FormWrapper className="d-flex flex-direction-column" form={form} onFinish={handleSubmit}>
-            <div className="d-flex gap-2">
+            <div className="d-flex gap-2 flex-sm-column">
               <InputField
                 name="firstName"
                 label="First Name"
@@ -110,7 +110,7 @@ const NewStaff = () => {
                 rules={[{ required: true }]}
               />
             </div>
-            <div className="d-flex gap-2">
+            <div className="d-flex gap-2 flex-sm-column">
               <InputField
                 label="Email"
                 name="email"
@@ -141,7 +141,6 @@ const NewStaff = () => {
                 onChange={handleChange}
               />
             </div>
-
             <Button
               type="primary"
               size="large"

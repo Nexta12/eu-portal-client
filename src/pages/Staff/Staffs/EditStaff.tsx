@@ -95,7 +95,7 @@ const EditStaff = () => {
             onFinish={handleUpdate}
             initialValues={data}
           >
-            <div className="d-flex gap-2">
+            <div className="d-flex gap-2 flex-sm-column">
               <InputField
                 name="firstName"
                 label="First Name"
@@ -111,7 +111,7 @@ const EditStaff = () => {
                 onChange={handleChange}
               />
             </div>
-            <div className="d-flex gap-2">
+            <div className="d-flex gap-2 flex-sm-column">
               <InputField
                 label="Email"
                 name="email"

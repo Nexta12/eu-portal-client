@@ -843,16 +843,34 @@
 
 .text-link {
   color: var(--text-link);
+
   &:hover {
     cursor: pointer;
     text-decoration: underline;
   }
 }
 
+
 @media only screen and (max-width: $mobile-breakpoint) {
   .hideSm {
     display: none;
   }
+
+  .flex-sm-column {
+    flex-direction: column;
+  }
+  .gap-2 {
+    gap: size_unit(1);
+  }
+    .p-1 {
+      padding: 0;
+    }
+    .justify-content-end {
+      justify-content: start;
+    }
+    .width-sm-100 {
+      width: 80%;
+    }
 }
 
 @media only screen and (min-width: $mobile-breakpoint) {
@@ -860,6 +878,7 @@
     display: none;
   }
 }
-.wrap{
+
+.wrap {
   flex-wrap: wrap;
 }

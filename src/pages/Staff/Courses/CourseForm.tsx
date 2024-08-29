@@ -116,7 +116,7 @@ export const CourseForm = ({
 
   return (
     <FormWrapper className="d-flex flex-direction-column" form={form} onFinish={onFinish}>
-      <div className="d-flex gap-2">
+      <div className="d-flex gap-2 flex-sm-column">
         <InputField
           name="name"
           label="Course Name"
@@ -144,7 +144,7 @@ export const CourseForm = ({
           onChange={handleRadioChange}
         />
       </div>
-      <div className="d-flex gap-2">
+      <div className="d-flex gap-2 flex-sm-column">
         <SelectField
           options={cohortOptions}
           label="Cohort"
@@ -172,7 +172,7 @@ export const CourseForm = ({
           rules={[{ required: true }]}
         />
       </div>
-      <div className="d-flex gap-2">
+      <div className="d-flex gap-2 flex-sm-column">
         <SelectField
           options={semesterOptions}
           label="Semester"

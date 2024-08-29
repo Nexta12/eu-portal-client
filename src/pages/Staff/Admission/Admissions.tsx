@@ -128,7 +128,7 @@ const Admissions = () => {
       description={`These are the students whose application status is "${selectedLabel}"`}
     >
       <div className="d-flex justify-content-end mb-1">
-        <Dropdown menu={{ items }} trigger={['click']} className="width-25">
+        <Dropdown menu={{ items }} trigger={['click']} className="width-25 width-sm-100">
           <Button onClick={(e) => e.preventDefault()}>
             <Space>
               Sort by:

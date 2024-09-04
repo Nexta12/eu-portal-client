@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import FooterAddress from '@components/Footer/FooterAddress';
-// import { InputButton } from '@components/Form';
+import { InputButton } from '@components/Form';
 import { paths } from '@routes/paths';
 import styles from './Footer.module.scss';
 
@@ -56,9 +56,9 @@ export const Footer = () => {
             <div>OUR INFOTAINMENT</div>
             <div>Enter your email address here to subscribe to our infotainment.</div>
           </div>
-          {/* <div className={styles.subscribeInput}>
-              <InputButton />
-            </div> */}
+          <div className={styles.subscribeInput}>
+            <InputButton />
+          </div>
         </div>
       </div>
       <div className={styles.footerBottom}>

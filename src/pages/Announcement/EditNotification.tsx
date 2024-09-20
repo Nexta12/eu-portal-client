@@ -16,8 +16,11 @@ import { getAxiosError } from '@utils/http';
 import useSWRMutation from 'swr/mutation';
 
 const levelOptions = [
-  { label: 'info', value: 'info', key: 'info' },
-  { label: 'warning', value: 'warning', key: 'warning' }
+  { label: 'Informational', value: 'info', key: 'info' },
+  { label: 'Warning', value: 'warning', key: 'warning' },
+  { label: 'Educational', value: 'info', key: 'educational' },
+  { label: 'Social', value: 'info', key: 'social' },
+  { label: 'Advice', value: 'info', key: 'advice' }
 ];
 
 const EditNotification = () => {

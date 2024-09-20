@@ -164,7 +164,7 @@ const ApplicationForm = ({ setCurrentStep, setStudentEmail }: ApplicationFormPro
         Africa. Keep in mind that while we accept general admissions applications on a rolling
         basis, there are deadlines for specific programs and we encourage you to apply early. If you
         have technical questions or concerns about the application process, please email us at
-        admission@euniversityedu.africa. Please not that application fee of{' '}
+        admission@euniversityedu.africa. Please note that application fee of{' '}
         {formatUSDollar.format(20)} applies.
       </div>
       <FormWrapper

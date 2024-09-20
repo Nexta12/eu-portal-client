@@ -45,7 +45,7 @@ const EditEvent: React.FC = () => {
   const handleOnFinish = async () => {
     try {
       await trigger();
-      setMessage({ success: 'Event updated successfully', error: null });
+      setMessage({ success: 'Activity updated successfully', error: null });
     } catch (error) {
       const axiosError = getAxiosError(error);
       setMessage({ error: formatErrors(axiosError.errorData), success: null });
@@ -72,7 +72,7 @@ const EditEvent: React.FC = () => {
   }, [event, form]);
 
   return (
-    <DashboardContentLayout title="Edit Event" description="Edit an event by filling the form">
+    <DashboardContentLayout title="Edit activity" description="Edit an activity by filling the form">
       <div className="d-flex flex-direction-column gap-2 p-2 align-items-center">
         {(message.success || message.error) && (
           <Alert
@@ -93,7 +93,7 @@ const EditEvent: React.FC = () => {
             <div className={styles.threeRowGrid}>
               <InputField
                 name="title"
-                label="Title of Event"
+                label="Title of Activity"
                 placeholder="Eg: Matriculation!!!"
                 rules={[{ required: true }]}
                 value={eventTitle}
@@ -101,14 +101,14 @@ const EditEvent: React.FC = () => {
               />
               <InputField
                 name="focus"
-                label="Event focus"
+                label="Activity focus"
                 placeholder="Eg: Talkshow"
                 value={eventFocus}
                 onChange={(e) => setEventFocus(e.target.value)}
               />
               <DatePickerField
-                placeholder="Event Date"
-                label="Date of Event"
+                placeholder=" Date of activity"
+                label="Date of activity"
                 name="eventDate"
                 value={eventDate}
                 onChange={onDateChange}
@@ -129,7 +129,7 @@ const EditEvent: React.FC = () => {
               htmlType="submit"
               loading={isMutating}
             >
-              Update Event
+              Update Activity
             </Button>
           </FormWrapper>
         </Card>

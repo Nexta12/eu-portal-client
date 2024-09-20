@@ -38,7 +38,7 @@ const Landing = () => {
 
         {events && events.length > 0 && (
           <div className={styles.events}>
-            <div className={styles.sectionTitle}>Upcoming events</div>
+            <div className={styles.sectionTitle}>Activities</div>
             <div className={styles.grid}>
               {events.map((item) => (
                 <EventCard item={item} key={item.id} />

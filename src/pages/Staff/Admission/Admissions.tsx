@@ -125,7 +125,7 @@ const Admissions = () => {
   return (
     <DashboardContentLayout
       title="Admissions"
-      description={`These are the students whose application status is "${selectedLabel}"`}
+      description={`These are the learners whose application status is "${selectedLabel}"`}
     >
       <div className="d-flex justify-content-end mb-1">
         <Dropdown menu={{ items }} trigger={['click']} className="width-25 width-sm-100">

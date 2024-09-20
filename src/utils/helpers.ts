@@ -54,8 +54,8 @@ export const monthsToYears = (months: number | string) => {
 };
 
 export const roleOptions = [
-  { value: UserRole.admin, label: 'Admin' },
-  { value: UserRole.staff, label: 'Staff' }
+  { value: UserRole.admin, label: 'Administrator' },
+  { value: UserRole.staff, label: 'Admin Staff' }
 ];
 
 export const capitalizeWords = (str: string) => str.replace(/\b\w/g, (char) => char.toUpperCase());

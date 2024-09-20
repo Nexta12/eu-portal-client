@@ -9,7 +9,7 @@ export const ourApproach = [
     title: 'Multi-Vocational',
     subtitle: 'Learning For Productivity',
     description:
-      'Our programmes and courses are aimed towards a broad spectrum of learners made up of Artisans, Corporate Workers, Students, Housewives, Office executives, etc. We are simply interested in making you more productive in whatever you do because that is the ultimate goal of learning.'
+      'Our programmes and courses are aimed towards a broad spectrum of learners made up of Artisans, Corporate Workers Learners, Housewives, Office executives, etc. We are simply interested in making you more productive in whatever you do because that is the ultimate goal of learning.'
   },
   {
     title: 'Multi-Sectoral',
@@ -28,6 +28,6 @@ export const ourApproach = [
     title: 'Multi-Requirements',
     subtitle: 'Everybody is Qualified To Learn!',
     description:
-      'We accept every requirement and place each learners based on their qualifications. If you come as you are with proof, we will help you start from where you stop.'
+      'We accept every requirement and place each learner based on their qualifications. If you come as you are with proof, we will help you start from where you stop.'
   }
 ];

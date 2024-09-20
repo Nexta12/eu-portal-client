@@ -126,7 +126,7 @@ const Staffs = () => {
   );
 
   return (
-    <DashboardContentLayout title="Staffs" description="List of Staffs at E-University Africa">
+    <DashboardContentLayout title="Staff" description="List of Staff at E-University Africa">
       <div className="d-flex justify-content-end m-2">
         <Button type="primary" size="large" onClick={() => navigate(paths.newStaff)}>
           Create new Staff

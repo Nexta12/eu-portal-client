@@ -13,8 +13,11 @@ import { getAxiosError } from '@utils/http';
 import useSWRMutation from 'swr/mutation';
 
 const levelOptions = [
-  { label: 'info', value: 'info', key: 'info' },
-  { label: 'warning', value: 'warning', key: 'warning' }
+  { label: 'Infoormational', value: 'info', key: 'info' },
+  { label: 'Warning', value: 'warning', key: 'warning' },
+  { label: 'Educational', value: 'info', key: 'educational' },
+  { label: 'Social', value: 'info', key: 'social' },
+  { label: 'Advice', value: 'info', key: 'advice' }
 ];
 
 const NewNotification = () => {
@@ -50,7 +53,7 @@ const NewNotification = () => {
   return (
     <DashboardContentLayout
       title="Create Broadcast Message"
-      description="This Places a Notice to all students dashboard"
+      description="This Places a Notice to all leanners dashboard"
     >
       <div className="d-flex flex-direction-column gap-2 p-2 align-items-center">
         {(message.success || message.error) && (

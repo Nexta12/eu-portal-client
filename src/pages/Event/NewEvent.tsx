@@ -34,7 +34,7 @@ const NewEvent: React.FC = () => {
   const handleOnFinish = async () => {
     try {
       await trigger();
-      setMessage({ error: null, success: 'Event created successfully' });
+      setMessage({ error: null, success: 'Activity created successfully' });
       setEventTitle('');
       setEventFocus('');
       setEventDate(null);
@@ -51,7 +51,7 @@ const NewEvent: React.FC = () => {
   };
 
   return (
-    <DashboardContentLayout title="Create Event" description="Create a new upcoming Event">
+    <DashboardContentLayout title="Create Activity" description="Create a new upcoming activity">
       <div className="d-flex flex-direction-column gap-2 p-2 align-items-center">
         {(message.success || message.error) && (
           <Alert
@@ -71,7 +71,7 @@ const NewEvent: React.FC = () => {
             <div className={styles.threeRowGrid}>
               <InputField
                 name="title"
-                label="Title of Event"
+                label="Activity Title"
                 placeholder="Eg: Matriculation!!!"
                 rules={[{ required: true }]}
                 value={eventTitle}
@@ -79,14 +79,14 @@ const NewEvent: React.FC = () => {
               />
               <InputField
                 name="focus"
-                label="Event focus"
+                label="Activity focus"
                 placeholder="Eg: Talkshow"
                 value={eventFocus}
                 onChange={(e) => setEventFocus(e.target.value)}
               />
               <DatePickerField
-                placeholder="Event Date"
-                label="Date of Event"
+                placeholder="Date of Activity"
+                label="Date of Activity"
                 name="eventDate"
                 value={eventDate}
                 onChange={onDateChange}
@@ -107,7 +107,7 @@ const NewEvent: React.FC = () => {
               htmlType="submit"
               loading={isMutating}
             >
-              Create Event
+              Create Activity
             </Button>
           </FormWrapper>
         </Card>

@@ -186,7 +186,7 @@ const getStaffSidebarItems = (
       onClick: () => handleOnClick(paths.pendingAdmissions)
     }),
     getItem({
-      label: 'Staffs',
+      label: 'Staff',
       key: 'staffs',
       icon: <BsPeople size={sideBarIconSize} />,
       onClick: () => handleOnClick(paths.staffs)
@@ -197,11 +197,6 @@ const getStaffSidebarItems = (
       icon: <HiOutlineAcademicCap size={sideBarIconSize} />,
       children: [
         getItem({
-          label: 'Courses',
-          key: 'academics_courses',
-          onClick: () => handleOnClick(paths.programmesAndCourses)
-        }),
-        getItem({
           label: 'Faculties',
           key: 'academics_faculties',
           onClick: () => handleOnClick(paths.faculties)
@@ -210,6 +205,11 @@ const getStaffSidebarItems = (
           label: 'Programmes',
           key: 'academics_programmes',
           onClick: () => handleOnClick(paths.programmes)
+        }),
+        getItem({
+          label: 'Courses',
+          key: 'academics_courses',
+          onClick: () => handleOnClick(paths.programmesAndCourses)
         })
       ]
     }),
@@ -246,7 +246,7 @@ const getStaffSidebarItems = (
       onClick: () => handleOnClick(paths.contactMessages)
     }),
     getItem({
-      label: 'Events',
+      label: 'School Activites',
       key: 'events',
       icon: <BsBookmarksFill size={sideBarIconSize} />,
       onClick: () => handleOnClick(paths.events)
@@ -258,7 +258,7 @@ const getStaffSidebarItems = (
       onClick: () => handleOnClick(paths.notifications)
     }),
     getItem({
-      label: 'Tickets',
+      label: 'Support Tickets',
       key: 'tickets',
       icon: <BsBlockquoteLeft size={sideBarIconSize} />,
       badge: <Badge count={ticketCount} style={{ backgroundColor: '#f5222d' }} />,

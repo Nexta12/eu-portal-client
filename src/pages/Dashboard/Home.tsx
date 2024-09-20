@@ -61,7 +61,7 @@ const Home = () => {
   } = useSWR<Notification[]>(endpoints.getNotifications, fetcher);
 
   return (
-    <DashboardContentLayout title={name} preTitle="Welcome">
+    <DashboardContentLayout title={name} preTitle={`Welcome ${user?.firstName}`}>
       {(message.success || message.error) && (
         <Alert
           type={message.error ? 'error' : 'success'}

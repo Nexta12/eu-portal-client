@@ -1,5 +1,6 @@
 import React from 'react';
-import explore1 from '@assets/images/explore3.jpg';
+// import explore1 from '@assets/images/explore3.jpg';
+ import cover from '@assets/images/eua-cover.png';
 import styles from './Explore.module.scss';
 
 export const Explore = () => (
@@ -28,7 +29,13 @@ export const Explore = () => (
         </div>
       </div>
       <div className={styles.imgDiv}>
-        <img src={explore1} alt="explore" />
+        <video
+          src="https://res.cloudinary.com/dbv7cpzv5/video/upload/v1726805774/eua/development/blog/video/vxeh1xwiedh4utb8re4j.mp4"
+          controls
+          poster={cover}
+        >
+          <track src="your-captions-file.vtt" kind="captions" srcLang="en" label="English" />
+        </video>
       </div>
     </div>
   </div>

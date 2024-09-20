@@ -24,7 +24,7 @@ const Column: ColumnsType<MappedEvent> = [
     key: 'sn'
   },
   {
-    title: 'Event Name',
+    title: 'Activity Name',
     dataIndex: 'title',
     key: 'title'
   },
@@ -34,7 +34,7 @@ const Column: ColumnsType<MappedEvent> = [
     key: 'focus'
   },
   {
-    title: 'Event Date',
+    title: 'Activity Date',
     dataIndex: 'eventDate',
     key: 'eventDate'
   },
@@ -76,7 +76,7 @@ const Events = () => {
     try {
       setIsDeleting(id);
       await apiClient.delete(`${endpoints.deleteEvent}/${id}`);
-      setMessage({ error: null, success: 'Event deleted successfully' });
+      setMessage({ error: null, success: 'Activity deleted successfully' });
       await mutate();
     } catch (err) {
       const axiosError = getAxiosError(err);
@@ -111,12 +111,12 @@ const Events = () => {
 
   return (
     <DashboardContentLayout
-      title="List of Events"
-      description="List of all upcoming and Passed Events"
+      title="List of School Activities"
+      description="List of all upcoming and passed school activities"
     >
       <div className="d-flex justify-content-end m-2">
         <Button type="primary" size="large" onClick={() => navigate(paths.newEvent)}>
-          Create new Event
+          Create new
         </Button>
       </div>
       {(message.success || message.error || error) && (
@@ -139,7 +139,7 @@ const Events = () => {
         onCancel={() => setOpenConfirmationModal(false)}
         type="warning"
       >
-        <div>Are you sure you want to delete this event?</div>
+        <div>Are you sure you want to delete this activity?</div>
       </CustomModal>
     </DashboardContentLayout>
   );

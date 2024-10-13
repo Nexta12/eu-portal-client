@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { RiArrowDropDownLine } from 'react-icons/ri';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Dropdown, MenuProps, Space } from 'antd';
+import { Button } from 'antd';
 import useSWR from 'swr';
 import apiClient from '@api/apiClient';
 import { endpoints } from '@api/endpoints';
@@ -67,44 +66,13 @@ const Column: ColumnsType<Admission> = [
 
 const Admissions = () => {
   const navigate = useNavigate();
-  const [selectedLabel, setSelectedLabel] = useState(AdmissionStatus.IN_REVIEW);
-
   const { data: studentList, isLoading } = useSWR(
-    `${endpoints.students}?admissionStatus=${selectedLabel}`,
+    `${endpoints.students}?admissionStatus=${AdmissionStatus.IN_REVIEW}`,
     async (url: string) => {
       const result = await apiClient.get<StudentProfile[]>(url);
       return result.data;
     }
   );
-
-  const items: MenuProps['items'] = [
-    {
-      label: AdmissionStatus.ADMITTED,
-      key: 'Admitted',
-      onClick: () => setSelectedLabel(AdmissionStatus.ADMITTED)
-    },
-    {
-      label: AdmissionStatus.APPLICATION,
-      key: 'Application',
-      onClick: () => setSelectedLabel(AdmissionStatus.APPLICATION)
-    },
-    {
-      label: AdmissionStatus.APPLICATION_FEE_PAID,
-      key: 'Paid application fee',
-      onClick: () => setSelectedLabel(AdmissionStatus.APPLICATION_FEE_PAID)
-    },
-    {
-      label: AdmissionStatus.IN_REVIEW,
-      key: 'In_review',
-      onClick: () => setSelectedLabel(AdmissionStatus.IN_REVIEW)
-    },
-    {
-      label: AdmissionStatus.REJECTED,
-      key: 'Rejected',
-      onClick: () => setSelectedLabel(AdmissionStatus.REJECTED)
-    }
-  ];
-
   const students =
     studentList?.map(
       ({ userId, firstName, lastName, gender, cohort, programme, admissionStatus }, index) => ({
@@ -124,20 +92,9 @@ const Admissions = () => {
 
   return (
     <DashboardContentLayout
-      title="Admissions"
-      description={`These are the learners whose application status is "${selectedLabel}"`}
+      title="Admissions in Review "
+      description="These are learners who have paid processing fees and have uploaded all required documents (eligible for admission)"
     >
-      <div className="d-flex justify-content-end mb-1">
-        <Dropdown menu={{ items }} trigger={['click']} className="width-25 width-sm-100">
-          <Button onClick={(e) => e.preventDefault()}>
-            <Space>
-              Sort by:
-              {selectedLabel}
-              <RiArrowDropDownLine />
-            </Space>
-          </Button>
-        </Dropdown>
-      </div>
       <AntTable columns={Column} dataSource={students} loading={isLoading} />
     </DashboardContentLayout>
   );

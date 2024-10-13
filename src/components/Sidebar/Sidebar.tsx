@@ -179,12 +179,45 @@ const getStaffSidebarItems = (
   };
 
   return [
+    // getItem({
+    //   label: 'Admissions',
+    //   key: 'admissions',
+    //   icon: <AiOutlineInbox size={sideBarIconSize} />,
+    //   onClick: () => handleOnClick(paths.pendingAdmissions)
+    // }),
     getItem({
-      label: 'Admissions',
-      key: 'admissions',
+      label: 'Admission Status',
+      key: 'admissionss',
       icon: <AiOutlineInbox size={sideBarIconSize} />,
-      onClick: () => handleOnClick(paths.pendingAdmissions)
+      children: [
+        getItem({
+          label: 'Admitted',
+          key: 'admitted_Learners',
+          onClick: () => handleOnClick(paths.admittedList)
+        }),
+        getItem({
+          label: 'In Review',
+          key: 'in_reviw',
+          onClick: () => handleOnClick(paths.inreviewList)
+        }),
+        getItem({
+          label: 'Rejected',
+          key: 'rejected_applicat',
+          onClick: () => handleOnClick(paths.rejectList)
+        }),
+        getItem({
+          label: 'Paid Application Fee',
+          key: 'paid_feee',
+          onClick: () => handleOnClick(paths.feepaidList)
+        }),
+        getItem({
+          label: 'New Application',
+          key: 'just_applying',
+          onClick: () => handleOnClick(paths.applicationList)
+        })
+      ]
     }),
+
     getItem({
       label: 'Staff',
       key: 'staffs',

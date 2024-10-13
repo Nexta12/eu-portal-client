@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, default-case */
 import React, { useEffect, useState } from 'react';
-import { AiOutlineInbox, AiOutlinePlus } from 'react-icons/ai';
+import { AiOutlinePlus } from 'react-icons/ai';
 import { Alert, Button, Upload, UploadProps, message } from 'antd';
 import useSWR from 'swr';
 import apiClient from '@api/apiClient';
@@ -145,7 +145,12 @@ const UploadDocuments = () => {
         <Upload {...uploadPictureProps}>
           <div>
             <AiOutlinePlus />
-            <div style={{ marginTop: 8 }}>Upload Picture</div>
+            <div style={{ marginTop: 4, fontSize: '10px' }}>
+              Click Here to
+              <br />
+              Upload Profile
+              <br /> Picture
+            </div>
           </div>
         </Upload>
 
@@ -156,14 +161,9 @@ const UploadDocuments = () => {
           showIcon
         />
         <Dragger {...uploadDocsProps}>
-          <div className="ant-upload-drag-icon">
-            <AiOutlineInbox size={30} />
-          </div>
-          <div className="ant-upload-text fw-bolder">Click or drag file to this area to upload</div>
-          <div className="d-flex justify-content-center flex-direction-column mt-1 fw-bold">
-            <div>Support for single or bulk upload.</div>
-            <div> Allowed files types: .jpg, .jpeg, .png, .pdf</div>
-          </div>
+          <Button size="large" type="primary" className="mt-2 align-self-center">
+            Click Here to Upload Documents
+          </Button>
         </Dragger>
         <Requirements requirements={dummyRequirements} />
         <Button

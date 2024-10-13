@@ -2,14 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { History, MissionVision, StrategicOutlook } from '@pages/AboutEua';
 import { ChangePassword, Documents, Edit, Profile, Transcript } from '@pages/Account';
-import {
-  AdmissionRequirement,
-  ApplicationProcess,
-  Apply,
-  CourseDetail,
-  CoursesFaculties,
-  Fees
-} from '@pages/Admission';
+import { AdmissionRequirement, ApplicationProcess, Apply, CourseDetail, CoursesFaculties, Fees } from '@pages/Admission';
 import { EditNotification, NewNotification, Notifications } from '@pages/Announcement';
 import { Blogs, Categories, EditBlog, EditCategory, NewBlog, NewCategory } from '@pages/Blog';
 import BlogList from '@pages/Blog/BlogList';
@@ -24,27 +17,16 @@ import { Landing, LandingPageOutlet } from '@pages/Landing';
 import { CookiePolicy, PrivacyPolicy, TermOfUse } from '@pages/LegalDocs';
 import LiveChat from '@pages/LiveChatPage/LiveChat';
 import { ForgotPassword, Login, ResetPassword } from '@pages/Login';
-import {
-  AdmissionDetails,
-  CourseList,
-  CreateProgramme,
-  EditCourse,
-  EditFaculty,
-  EditProgramme,
-  EditStaff,
-  Faculties,
-  NewFaculty,
-  NewStaff,
-  PendingAdmissions,
-  Programmes,
-  ProgrammesCourses,
-  Staff,
-  ViewProgramme
-} from '@pages/Staff';
+import { AdmissionDetails, CourseList, CreateProgramme, EditCourse, EditFaculty, EditProgramme, EditStaff, Faculties, NewFaculty, NewStaff, PendingAdmissions, Programmes, ProgrammesCourses, Staff, ViewProgramme } from '@pages/Staff';
+import AdmittedList from '@pages/Staff/Admission/AdmittedList';
+import NewApplicants from '@pages/Staff/Admission/JustApplying';
+import ApplicantsPaidApplicationFee from '@pages/Staff/Admission/PaidApplicationFee';
+import RejectedApplications from '@pages/Staff/Admission/RejectedList';
 import NewCourse from '@pages/Staff/Courses/NewCourse';
 import { AdminTicketList, EditTicket, NewTicket, Tickets } from '@pages/Ticket';
 import ViewTicket from '@pages/Ticket/ViewTicket';
 import { paths } from '@routes/paths';
+import AdmissionInReviewList from '@pages/Staff/Admission/InReview';
 import { PrivateRoute } from './PrivateRoute';
 
 export const AppRoutes = () => (
@@ -124,6 +106,11 @@ export const AppRoutes = () => (
         <Route path={paths.newCategory} element={<NewCategory />} />
         <Route path={`${paths.editCategory}/:id`} element={<EditCategory />} />
         <Route path={paths.liveChat} element={<LiveChat />} />
+        <Route path={paths.admittedList} element={<AdmittedList />} />
+        <Route path={paths.feepaidList} element={<ApplicantsPaidApplicationFee />} />
+        <Route path={paths.rejectList} element={<RejectedApplications />} />
+        <Route path={paths.applicationList} element={<NewApplicants />} />
+        <Route path={paths.inreviewList} element={<AdmissionInReviewList />} />
       </Route>
     </Route>
     <Route path="*" element={<NotFound />} />

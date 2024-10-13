@@ -68,5 +68,10 @@ export const paths = {
   newCategory: '/dashboard/new-category',
   editCategory: '/dashboard/edit-category',
   liveChat: '/dashboard/live-chat',
-  developer: '/next-apps'
+  developer: '/next-apps',
+  admittedList: '/dashboard/admittedList',
+  rejectList: '/dashboard/rejected-list',
+  applicationList: '/dashboard/new-application',
+  inreviewList: '/dashboard/in-review',
+  feepaidList: '/dashboard/paid-application-fee'
 };

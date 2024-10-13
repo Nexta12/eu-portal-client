@@ -91,7 +91,7 @@ const Events = () => {
       sn: index + 1,
       title,
       author: capitalizeWords(`${author.firstName} ${author.lastName}`),
-      focus: capitalizeWords(focus),
+      focus: capitalizeWords(focus || ''),
       eventDate: eventDate ? formatDate(eventDate) : '',
       createdAt: createdAt ? formatDate(createdAt) : '',
       actions: (

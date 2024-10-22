@@ -70,5 +70,6 @@ export const endpoints = {
   createContactMessage: '/contacts/create',
   getAllContactMessage: '/contacts',
   deleteContactMessage: '/contacts/delete',
-  replyContactMessage: '/contacts/reply'
+  replyContactMessage: '/contacts/reply',
+  deleteStudent: '/students/delete'
 };

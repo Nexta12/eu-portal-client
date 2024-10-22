@@ -38,6 +38,8 @@ const LiveChat = () => {
       removeLocalStorageItem('chatUser');
       removeLocalStorageItem('token');
     }
+    setIsChatMinimized(true);
+    setIsChatOpen(false);
   };
 
   const minimizeChatBox = () => {
@@ -71,7 +73,7 @@ const LiveChat = () => {
                 <FiMinus className={styles.icon} title="Minimize" />
               </button>
               <button onClick={closeChat}>
-                <IoCloseSharp className={styles.icon} title="Close Chat" />
+                <IoCloseSharp className={styles.icon} title="End Chat" />
               </button>
             </div>
 

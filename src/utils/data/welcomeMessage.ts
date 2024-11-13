@@ -10,7 +10,9 @@ export const AfricanLanguages = [
   'Ku soo dhowow eUniversity Afrika',
   'Akwaaba wo eUniversity Afrika',
   'Murakaza neza kuri eUniversity Afrika',
-  'Bienvenue à l`eUniversity Afrique'
+  'Bienvenue à l`eUniversity Afrique',
+  'مرحبًا بكم في جامعة أفريقيا',
+  'Bem-vindo à eUniversidade África'
 ];
 
 export const animations = ['slideInFromTop', 'slideInFromBottom', 'slideInFromLeft', 'slideInFromRight'];

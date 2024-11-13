@@ -2,7 +2,14 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { History, MissionVision, StrategicOutlook } from '@pages/AboutEua';
 import { ChangePassword, Documents, Edit, Profile, Transcript } from '@pages/Account';
-import { AdmissionRequirement, ApplicationProcess, Apply, CourseDetail, CoursesFaculties, Fees } from '@pages/Admission';
+import {
+  AdmissionRequirement,
+  ApplicationProcess,
+  Apply,
+  CourseDetail,
+  CoursesFaculties,
+  Fees
+} from '@pages/Admission';
 import { EditNotification, NewNotification, Notifications } from '@pages/Announcement';
 import { Blogs, Categories, EditBlog, EditCategory, NewBlog, NewCategory } from '@pages/Blog';
 import BlogList from '@pages/Blog/BlogList';
@@ -10,6 +17,7 @@ import SingleBlog from '@pages/Blog/SingleBlog';
 import { ContactUs, Messages, ViewContactMessage } from '@pages/Contact';
 import { CourseHistory, Enrolments, PreRegistration } from '@pages/Courses';
 import { Dashboard, DashboardHome } from '@pages/Dashboard';
+import AdminDashboard from '@pages/Dashboard/Admin';
 import { NotFound } from '@pages/Errors';
 import { EditEvent, Events, NewEvent } from '@pages/Event';
 import { AccountStatement, ConfirmPayment, MakePayment } from '@pages/Finance';
@@ -17,16 +25,33 @@ import { Landing, LandingPageOutlet } from '@pages/Landing';
 import { CookiePolicy, PrivacyPolicy, TermOfUse } from '@pages/LegalDocs';
 import LiveChat from '@pages/LiveChatPage/LiveChat';
 import { ForgotPassword, Login, ResetPassword } from '@pages/Login';
-import { AdmissionDetails, CourseList, CreateProgramme, EditCourse, EditFaculty, EditProgramme, EditStaff, Faculties, NewFaculty, NewStaff, PendingAdmissions, Programmes, ProgrammesCourses, Staff, ViewProgramme } from '@pages/Staff';
+import {
+  AdmissionDetails,
+  CourseList,
+  CreateProgramme,
+  EditCourse,
+  EditFaculty,
+  EditProgramme,
+  EditStaff,
+  Faculties,
+  NewFaculty,
+  NewStaff,
+  PendingAdmissions,
+  Programmes,
+  ProgrammesCourses,
+  Staff,
+  ViewProgramme
+} from '@pages/Staff';
 import AdmittedList from '@pages/Staff/Admission/AdmittedList';
+import AdmissionInReviewList from '@pages/Staff/Admission/InReview';
 import NewApplicants from '@pages/Staff/Admission/JustApplying';
 import ApplicantsPaidApplicationFee from '@pages/Staff/Admission/PaidApplicationFee';
 import RejectedApplications from '@pages/Staff/Admission/RejectedList';
 import NewCourse from '@pages/Staff/Courses/NewCourse';
+import StaffProfile from '@pages/Staff/Staffs/Profile';
 import { AdminTicketList, EditTicket, NewTicket, Tickets } from '@pages/Ticket';
 import ViewTicket from '@pages/Ticket/ViewTicket';
 import { paths } from '@routes/paths';
-import AdmissionInReviewList from '@pages/Staff/Admission/InReview';
 import { PrivateRoute } from './PrivateRoute';
 
 export const AppRoutes = () => (
@@ -51,29 +76,19 @@ export const AppRoutes = () => (
       <Route path={paths.blogs} element={<Blogs />} />
       <Route path={`${paths.blogs}/:slug`} element={<SingleBlog />} />
     </Route>
+
     <Route path={paths.dashboard} element={<PrivateRoute />}>
       <Route path={paths.dashboard} element={<Dashboard />}>
-        <Route path={paths.dashboardHome} element={<DashboardHome />} />
-        <Route path={paths.dashboardIndex} element={<DashboardHome />} />
-        <Route path={paths.preRegistration} element={<PreRegistration />} />
-        <Route path={paths.enrolments} element={<Enrolments />} />
-        <Route path={paths.courseHistory} element={<CourseHistory />} />
-        <Route path={paths.profile} element={<Profile />} />
-        <Route path={paths.changePassword} element={<ChangePassword />} />
-        <Route path={paths.documents} element={<Documents />} />
-        <Route path={paths.makePayment} element={<MakePayment />} />
-        <Route path={paths.accountStatement} element={<AccountStatement />} />
-        <Route path={paths.applicationProcess} element={<ApplicationProcess />} />
-        <Route path={paths.transcript} element={<Transcript />} />
-        <Route path={paths.editProfile} element={<Edit />} />
+        {/* Admin Only */}
+        <Route path={paths.adminDashboard} element={<AdminDashboard />} />
         <Route path={paths.pendingAdmissions} element={<PendingAdmissions />} />
         <Route path={`${paths.admissionDetails}/:userId`} element={<AdmissionDetails />} />
         <Route path={paths.confirmPayment} element={<ConfirmPayment />} />
         <Route path={paths.staffs} element={<Staff />} />
         <Route path={paths.newStaff} element={<NewStaff />} />
         <Route path={`${paths.editStaff}/:userId`} element={<EditStaff />} />
+        <Route path={`${paths.viewStaff}/:userId`} element={<StaffProfile />} />
         <Route path={paths.programmesAndCourses} element={<ProgrammesCourses />} />
-        <Route path={paths.courses} element={<CourseList />} />
         <Route path={paths.newCourse} element={<NewCourse />} />
         <Route path={paths.faculties} element={<Faculties />} />
         <Route path={paths.newFaculty} element={<NewFaculty />} />
@@ -83,6 +98,28 @@ export const AppRoutes = () => (
         <Route path={paths.createProgramme} element={<CreateProgramme />} />
         <Route path={`${paths.editProgramme}/:id`} element={<EditProgramme />} />
         <Route path={paths.programmesAndCourses} element={<ProgrammesCourses />} />
+
+        {/* Student Only */}
+        <Route path={paths.preRegistration} element={<PreRegistration />} />
+        <Route path={paths.courseHistory} element={<CourseHistory />} />
+        <Route path={paths.makePayment} element={<MakePayment />} />
+        <Route path={paths.accountStatement} element={<AccountStatement />} />
+        <Route path={paths.enrolments} element={<Enrolments />} />
+
+        {/* Shared Routes */}
+        <Route path={paths.profile} element={<Profile />} />
+        <Route path={paths.changePassword} element={<ChangePassword />} />
+        <Route path={paths.documents} element={<Documents />} />
+        <Route path={paths.editProfile} element={<Edit />} />
+
+        <Route path={paths.dashboardHome} element={<DashboardHome />} />
+        <Route path={paths.dashboardIndex} element={<DashboardHome />} />
+
+        <Route path={paths.applicationProcess} element={<ApplicationProcess />} />
+        <Route path={paths.transcript} element={<Transcript />} />
+
+        <Route path={paths.courses} element={<CourseList />} />
+
         <Route path={`${paths.courses}/:id`} element={<CourseList />} />
         <Route path={paths.newCourse} element={<NewCourse />} />
         <Route path={`${paths.editCourse}/:id`} element={<EditCourse />} />
@@ -113,6 +150,7 @@ export const AppRoutes = () => (
         <Route path={paths.inreviewList} element={<AdmissionInReviewList />} />
       </Route>
     </Route>
+
     <Route path="*" element={<NotFound />} />
   </Routes>
 );

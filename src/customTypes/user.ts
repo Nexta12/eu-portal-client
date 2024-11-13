@@ -10,7 +10,9 @@ export enum UserRole {
 
 export enum Gender {
   MALE = 'male',
-  FEMALE = 'female'
+  FEMALE = 'female',
+  UNSPECIFIED = 'unspecified',
+  UNDISCLOSED = 'undisclosed'
 }
 
 export enum AdmissionStatus {
@@ -77,4 +79,10 @@ export enum ProcessAdmissionStatus {
   PENDING = 'pending',
   APPROVED = 'approved',
   REJECTED = 'rejected'
+}
+
+export interface User {
+  userId: string;
+  name: string;
+  role: UserRole;
 }

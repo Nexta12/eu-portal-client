@@ -40,7 +40,7 @@ const localStorageUser = getLocalStorageItem('user');
 
 export const getLoginPath = (user: LoggedInUser) =>
   user.role === UserRole.staff || user.role === UserRole.admin
-    ? paths.pendingAdmissions
+    ? paths.adminDashboard
     : isApplicationInProgress(user)
       ? paths.applicationProcess
       : paths.dashboardHome;

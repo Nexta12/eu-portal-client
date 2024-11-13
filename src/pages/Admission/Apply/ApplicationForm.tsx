@@ -45,7 +45,9 @@ export const cohortOptions = [
 
 export const genderOptions = [
   { value: Gender.MALE, label: 'Male' },
-  { value: Gender.FEMALE, label: 'Female' }
+  { value: Gender.FEMALE, label: 'Female' },
+  { value: Gender.UNSPECIFIED, label: 'Unspecified' },
+  { value: Gender.UNDISCLOSED, label: 'Undisclosed' }
 ];
 
 const employmentStatusOptions = [
@@ -182,6 +184,7 @@ const ApplicationForm = ({ setCurrentStep, setStudentEmail }: ApplicationFormPro
             onChange={onChange}
             rules={[{ required: true }]}
           />
+
           <InputField
             placeholder="Middle Name"
             label="Middle Name"
@@ -266,8 +269,8 @@ const ApplicationForm = ({ setCurrentStep, setStudentEmail }: ApplicationFormPro
             rules={[{ required: true }]}
           />
           <InputField
-            placeholder="Zip Code"
-            label="Zip Code"
+            placeholder="Zip Code/Postal Code"
+            label="Zip Code/Postal Code"
             name="zipCode"
             value={newStudent.zipCode}
             onChange={onChange}

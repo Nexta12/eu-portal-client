@@ -111,6 +111,7 @@ const Staffs = () => {
       createdAt: formatDate(createdAt),
       actions: (
         <div className="d-flex align-items-center gap-1">
+          <Button onClick={() => navigate(`${paths.viewStaff}/${userId}`)}>View</Button>
           <Button onClick={() => navigate(`${paths.editStaff}/${userId}`)}>Edit</Button>
           <Button
             onClick={() => {

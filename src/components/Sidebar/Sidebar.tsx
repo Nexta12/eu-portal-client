@@ -6,6 +6,7 @@ import {
   AiOutlineProfile,
   AiOutlineWallet
 } from 'react-icons/ai';
+import { BiUser } from 'react-icons/bi';
 import {
   BsBlockquoteLeft,
   BsBook,
@@ -19,10 +20,12 @@ import { CiMail } from 'react-icons/ci';
 import { HiOutlineAcademicCap, HiOutlineDocumentText } from 'react-icons/hi';
 import { IoChatbubblesOutline } from 'react-icons/io5';
 import { LiaBullhornSolid } from 'react-icons/lia';
+import { MdDashboard } from 'react-icons/md';
 import { TfiExchangeVertical } from 'react-icons/tfi';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { Badge, Menu, MenuProps } from 'antd';
 import { paths } from '@routes/paths';
+import useAuthStore from '@store/authStore';
 import styles from './Sidebar.module.scss';
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -171,22 +174,22 @@ const getStaffSidebarItems = (
   setShowSidebar: (data: boolean) => void,
   ticketCount: number,
   totalUnreadChats: number,
-  unreadMessagesCount: number
+  unreadMessagesCount: number,
+  user: any
 ): MenuProps['items'] => {
   const handleOnClick = (path: string) => {
     setShowSidebar(false);
     navigate(path);
   };
-
   return [
-    // getItem({
-    //   label: 'Admissions',
-    //   key: 'admissions',
-    //   icon: <AiOutlineInbox size={sideBarIconSize} />,
-    //   onClick: () => handleOnClick(paths.pendingAdmissions)
-    // }),
     getItem({
-      label: 'Admission Status',
+      label: 'Dashboard',
+      key: 'dashboard',
+      icon: <MdDashboard size={sideBarIconSize} />,
+      onClick: () => handleOnClick(paths.adminDashboard)
+    }),
+    getItem({
+      label: 'Admission',
       key: 'admissionss',
       icon: <AiOutlineInbox size={sideBarIconSize} />,
       children: [
@@ -303,6 +306,12 @@ const getStaffSidebarItems = (
       icon: <IoChatbubblesOutline size={sideBarIconSize} />,
       badge: <Badge count={totalUnreadChats} style={{ backgroundColor: '#f5222d' }} />,
       onClick: () => handleOnClick(paths.liveChat)
+    }),
+    getItem({
+      label: 'My Profile',
+      key: 'profile',
+      icon: <BiUser size={sideBarIconSize} />,
+      onClick: () => handleOnClick(`${paths.viewStaff}/${user?.userId}`)
     })
   ];
 };
@@ -329,6 +338,7 @@ export const Sidebar = ({
   totalUnreadChats = 0
 }: SidebarProps) => {
   const navigate = useNavigate();
+  const { user } = useAuthStore();
 
   const getSidebarItemWithType = {
     application: getApplicationSidebarItems(navigate, setShowSidebar),
@@ -338,7 +348,8 @@ export const Sidebar = ({
       setShowSidebar,
       ticketCount,
       totalUnreadChats,
-      unreadMessagesCount
+      unreadMessagesCount,
+      user
     )
   };
   const sidebarItems = getSidebarItemWithType[type] || [];

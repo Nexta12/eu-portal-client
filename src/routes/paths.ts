@@ -1,6 +1,7 @@
 export const paths = {
   index: '/',
   dashboard: '/',
+  adminDashboard: '/dashboard/admin',
   vision: '/vision',
   strategicOutlook: '/strategic-outlook',
   history: '/history',
@@ -41,6 +42,7 @@ export const paths = {
   staffs: '/dashboard/staffs',
   newStaff: '/dashboard/create-new-staff',
   editStaff: '/dashboard/edit-staff',
+  viewStaff: '/dashboard/staff',
   faculties: '/dashboard/faculties',
   newFaculty: '/dashboard/new-faculty',
   editFaculty: '/dashboard/edit-faculty',

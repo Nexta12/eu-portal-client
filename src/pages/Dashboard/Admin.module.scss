@@ -1,0 +1,86 @@
+@import '../../styles/variables.scss';
+
+main {
+  background-color: $background-secondary;
+  height: calc(100% + 50px);
+  padding: 20px;
+  overflow-x: hidden !important;
+  width: inherit;
+}
+
+.card {
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+
+
+  .singleCard {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px lightgray;
+    width: 24%;
+
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+
+      p {
+        font-size: 15px;
+        font-weight: 300;
+        color: rgb(88, 86, 86);
+      }
+
+      .odd {
+        font-size: 28px;
+        padding: 5px;
+        background-color: rgb(248, 208, 208);
+        border-radius: 3px;
+      }
+
+      .even {
+        font-size: 28px;
+        padding: 5px;
+        background-color: rgb(208, 248, 248);
+        border-radius: 3px;
+      }
+    }
+
+    .bottom {
+      font-weight: 800;
+    }
+
+    @media screen and (max-width: $medium-breakpoint) {
+      width: 48%;
+      margin: 0 auto;
+    }
+
+    @media screen and (max-width: $smallScreen-brceakpoint) {
+      width: 95%;
+      margin: 0 auto;
+    }
+  }
+}
+
+.midSection {
+  background-color: #fff;
+  box-sizing: 2px 2px 3px gray;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 20px;
+  overflow-x: auto;
+
+  h2 {
+    font-size: 17px;
+    font-weight: 400;
+    text-align: left;
+    color: rgb(88, 86, 86);
+    margin: 10px 0;
+  }
+}

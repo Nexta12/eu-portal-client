@@ -1,5 +1,8 @@
 $base-unit: 10px;
+$smallScreen-brceakpoint: 450px;
 $mobile-breakpoint: 768px;
+$medium-breakpoint: 920px;
+
 
 // font sizes
 $font-size-bodyXS: 12px;
@@ -13,6 +16,7 @@ $font-size-bodyXL: 24px;
 $color-primary: #960524;
 $text-color-secondary: #817d7d;
 $background-secondary: #f0f0f0;
+
 
 // line heights
 $line-height-sm: 16px;

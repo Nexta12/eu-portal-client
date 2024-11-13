@@ -7,7 +7,6 @@ import { getLocalStorageItem } from '@utils/localStorage';
 export const PrivateRoute = () => {
   const { isAuthenticated, logout } = useAuthStore();
   const navigate = useNavigate();
-
   useEffect(() => {
     const token = getLocalStorageItem('token');
     if (!token && !isAuthenticated) {

@@ -12,7 +12,9 @@ interface BlogCardProps {
 
 export const BlogCard: React.FC<BlogCardProps> = ({ item }) => (
   <div className={styles.singleCard}>
-    <img className={styles.blogImage} src={item.blogImage || blogImage1} alt="blogImage" />
+    <div className={styles.imgContainer}>
+      <img className={styles.blogImage} src={item.blogImage || blogImage1} alt="blogImage" />
+    </div>
     <div className={styles.blogBody}>
       <p className={styles.category}>{capitalizeWords(item.category.title)}</p>
       <a href={`${paths.blogs}/${item.slug}`} className={styles.link}>
@@ -20,18 +22,17 @@ export const BlogCard: React.FC<BlogCardProps> = ({ item }) => (
       </a>
       <p className={styles.content}>{item.snippet}...</p>
       <div className={styles.authorSection}>
-        <img className={styles.authorImg} src={userImage} alt="authorImage" />
+        <img
+          className={styles.authorImg}
+          src={item.author.profilePicture || userImage}
+          alt="authorImage"
+        />
         <div className={styles.rightSide}>
           <span className={styles.author}>
             {capitalizeWords(item.author.firstName)} {capitalizeWords(item.author.lastName)}
           </span>
           <p className={styles.time}>{formatDate(item.createdAt)}</p>
         </div>
-      </div>
-      <div className={styles.readMore}>
-        <a className={styles.readMoreBtn} href={`${paths.blogs}/${item.slug}`}>
-          Read More
-        </a>
       </div>
     </div>
   </div>

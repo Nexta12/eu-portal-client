@@ -5,6 +5,19 @@
     padding: 40px;
     display: flex;
     gap: 15px;
+    position: relative;
+
+    .Link{
+        position: absolute;
+        top: 8px;
+        right: 45px;
+        text-decoration: none;
+        background-color: $color-primary;
+        color: #fff;
+        padding: 5px 10px;
+        font-size: 12px;
+        border-radius: 3px;
+    }
     
     @media screen and (max-width: $medium-breakpoint) {
        flex-direction: column;
@@ -29,7 +42,8 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            background-color: #FDAE22;
+            // background-color: #FDAE22;
+            background-color: #efefef;
             border: 2px solid #fff;
             display: flex;
             align-items: center;
@@ -138,3 +152,25 @@
 
     }
 }
+
+
+.threeRowGrid {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    @media screen and (max-width: $mobile-breakpoint) {
+      grid-template-columns: 1fr;
+      grid-gap: 20px;
+    }
+  }
+.twoRowGrid {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    @media screen and (max-width: $mobile-breakpoint) {
+      grid-template-columns: 1fr;
+    }
+  }
+  

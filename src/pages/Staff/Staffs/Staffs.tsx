@@ -8,7 +8,6 @@ import { endpoints } from '@api/endpoints';
 import { DashboardContentLayout } from '@components/Layout';
 import { CustomModal } from '@components/Modal';
 import { AntTable } from '@components/Table';
-import { AntTag } from '@components/Tag';
 import { AlertMessage } from '@customTypes/general';
 import { StudentProfile, UserRole } from '@customTypes/user';
 import { paths } from '@routes/paths';
@@ -21,7 +20,7 @@ import { ColumnsType } from 'antd/es/table';
 
 type StaffType = Pick<
   StudentProfile,
-  'userId' | 'firstName' | 'lastName' | 'email' | 'role' | 'createdAt' | 'isPasswordGenerated'
+  'userId' | 'firstName' | 'lastName' | 'email' | 'role' | 'createdAt'
 >;
 
 const Column: ColumnsType<StaffType> = [
@@ -59,13 +58,6 @@ const Column: ColumnsType<StaffType> = [
     key: 'createdAt'
   },
   {
-    title: 'Is Password Generated',
-    dataIndex: 'isPasswordGenerated',
-    key: 'isPasswordGenerated',
-    render: (isPasswordGenerated: boolean) =>
-      isPasswordGenerated ? <AntTag color="green" text="Yes" /> : <AntTag color="red" text="No" />
-  },
-  {
     title: 'Actions',
     dataIndex: 'actions',
     key: 'actions'
@@ -99,7 +91,7 @@ const Staffs = () => {
 
   const staffs: StaffType[] = data || [];
   const staffList = staffs?.map(
-    ({ userId, firstName, lastName, role, email, createdAt, isPasswordGenerated }, index) => ({
+    ({ userId, firstName, lastName, role, email, createdAt }, index) => ({
       userId,
       key: index + 1,
       sn: index + 1,
@@ -107,12 +99,11 @@ const Staffs = () => {
       lastName,
       email,
       role: role as UserRole,
-      isPasswordGenerated,
       createdAt: formatDate(createdAt),
       actions: (
         <div className="d-flex align-items-center gap-1">
           <Button onClick={() => navigate(`${paths.viewStaff}/${userId}`)}>View</Button>
-          <Button onClick={() => navigate(`${paths.editStaff}/${userId}`)}>Edit</Button>
+          {/* <Button onClick={() => navigate(`${paths.editStaff}/${userId}`)}>Edit</Button> */}
           <Button
             onClick={() => {
               setOpenConfirmationModal(true);

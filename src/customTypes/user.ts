@@ -74,6 +74,27 @@ export interface StudentProfile {
   updatedAt: Date | string;
   document: StudentDocument;
 }
+export interface StaffProfile {
+  userId: string;
+  firstName: string;
+  middleName: string;
+  lastName: string;
+  email: string;
+  contributions: string;
+  address?: string;
+  phoneNumber?: string;
+  location?: string;
+  portfolio?: string;
+  department: string;
+  profilePicture:string;
+  quote?: string;
+  description?: string;
+  qualification?: string;
+  certifications: string;
+  role: UserRole;
+  createdAt: Date | string;
+  updatedAt: Date | string;
+}
 
 export enum ProcessAdmissionStatus {
   PENDING = 'pending',

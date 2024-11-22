@@ -48,7 +48,8 @@ import NewApplicants from '@pages/Staff/Admission/JustApplying';
 import ApplicantsPaidApplicationFee from '@pages/Staff/Admission/PaidApplicationFee';
 import RejectedApplications from '@pages/Staff/Admission/RejectedList';
 import NewCourse from '@pages/Staff/Courses/NewCourse';
-import StaffProfile from '@pages/Staff/Staffs/Profile';
+import StaffProfilePage from '@pages/Staff/Staffs/Profile';
+import EditStaffProfile from '@pages/Staff/Staffs/EditProfile';
 import { AdminTicketList, EditTicket, NewTicket, Tickets } from '@pages/Ticket';
 import ViewTicket from '@pages/Ticket/ViewTicket';
 import { paths } from '@routes/paths';
@@ -87,7 +88,8 @@ export const AppRoutes = () => (
         <Route path={paths.staffs} element={<Staff />} />
         <Route path={paths.newStaff} element={<NewStaff />} />
         <Route path={`${paths.editStaff}/:userId`} element={<EditStaff />} />
-        <Route path={`${paths.viewStaff}/:userId`} element={<StaffProfile />} />
+        <Route path={`${paths.viewStaff}/:userId`} element={<StaffProfilePage />} />
+        <Route path={`${paths.editStaffProfile}/:userId`} element={<EditStaffProfile />} />
         <Route path={paths.programmesAndCourses} element={<ProgrammesCourses />} />
         <Route path={paths.newCourse} element={<NewCourse />} />
         <Route path={paths.faculties} element={<Faculties />} />

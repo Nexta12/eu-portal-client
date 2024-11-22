@@ -126,6 +126,7 @@ const NewBlog: React.FC = () => {
               label="Description"
               value={blogDescription}
               onChange={setBlogDescription}
+              className="my-2"
             />
             <Button
               type="primary"

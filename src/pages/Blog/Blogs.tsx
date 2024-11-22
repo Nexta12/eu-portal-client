@@ -16,7 +16,7 @@ const Blogs: React.FC = () => {
   const { data: blogs } = useSWR(endpoints.getBlogs, fetcher);
   return (
     <PageLayout className="lh-md" siteTitle="Blog Posts">
-      <h2 className={styles.pageTitle}>Blog Posts</h2>
+      <h2 className={styles.pageTitle}>Recent Posts</h2>
       <div className={styles.blogCards}>
         {blogs?.map((item) => (
           <BlogCard item={item} key={item.id} />

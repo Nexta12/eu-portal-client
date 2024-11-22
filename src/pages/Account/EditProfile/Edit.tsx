@@ -21,6 +21,7 @@ const Edit = () => {
   const { user } = useAuthStore();
   const userId = user?.userId;
   const [message, setMessage] = useState<AlertMessage>({ error: null, success: null });
+
   const { data } = useSWR(`${endpoints.students}/${userId}`, async (url: string) => {
     const response = await apiClient.get<SuccessResponse<StudentProfile>>(url);
     return response.data.data;

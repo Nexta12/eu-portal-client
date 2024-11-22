@@ -1,39 +1,86 @@
 import React from 'react';
 import { FaQuoteLeft } from 'react-icons/fa';
+import { Link, useParams } from 'react-router-dom';
+import useSWR from 'swr';
+import apiClient from '@api/apiClient';
+import { endpoints } from '@api/endpoints';
+import { SuccessResponse } from '@customTypes/general';
+import { StaffProfile } from '@customTypes/user';
+import { paths } from '@routes/paths';
+import useAuthStore from '@store/authStore';
 import styles from './Profile.module.scss';
 
-const StaffProfile = () => {
-  const user = 'Emeka Odigbo';
+const StaffProfilePage = () => {
+  const { userId } = useParams();
+  const { user } = useAuthStore();
+
+  // Fetch current user
+  const { data, isLoading } = useSWR(`${endpoints.staffs}/${userId}`, async (link: string) => {
+    const response = await apiClient.get<SuccessResponse<StaffProfile>>(link);
+    return response.data.data;
+  });
+
+  // Loading State
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  // Handle data being unavailable
+  if (!data) {
+    return <div>Profile not found</div>;
+  }
+  const {
+    firstName,
+    lastName,
+    middleName,
+    description,
+    quote,
+    contributions,
+    location,
+    portfolio,
+    email,
+    department,
+    qualification,
+    certifications,
+    profilePicture
+  } = data;
   return (
     <div className={styles.profileWrapper}>
+      {user?.userId === userId && (
+        <Link to={`${paths.editStaffProfile}/${userId}`} className={styles.Link}>
+          Update Info
+        </Link>
+      )}
+
       <div className={styles.left}>
         <div className={styles.profilePiceZone}>
           <div className={styles.imgContainer}>
-            <img src="/avater.png" alt="profile" />
+            <img src={profilePicture || '/avater.png'} alt="profile" />
           </div>
-          <span className={styles.name}>{user}</span>
-          <span className={styles.portfolio}>Senior Auditor General</span>
+          <span className={styles.name}>
+            {' '}
+            {firstName} {middleName} {lastName}
+          </span>
+          <span className={styles.portfolio}>{portfolio || 'Yet to provide'}</span>
         </div>
         <div className={styles.quote}>
           <span>
             <FaQuoteLeft className={styles.quoticon} />
           </span>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse aut vitae, labore ex quia
-          maxime debitis officiis quas vero soluta,
+          {quote || 'Add a beautiful quote here'}
         </div>
 
         <div className={styles.otherInfo}>
           <div className={styles.InnerDetails}>
             <p className={styles.InnerKey}>Department:</p>
-            <p className={styles.InnerValue}>Bursar</p>
+            <p className={styles.InnerValue}>{department || 'Yet to provide'}</p>
           </div>
           <div className={styles.InnerDetails}>
             <p className={styles.InnerKey}>Email:</p>
-            <p className={styles.InnerValue}>johndoe@gmail.com</p>
+            <p className={styles.InnerValue}>{email}</p>
           </div>
           <div className={styles.InnerDetails}>
             <p className={styles.InnerKey}>Location:</p>
-            <p className={styles.InnerValue}>Lagos</p>
+            <p className={styles.InnerValue}>{location || 'Yet to Provide'}</p>
           </div>
 
           <div className={styles.valuesBotton}>
@@ -51,30 +98,22 @@ const StaffProfile = () => {
         <div className={styles.Segment}>
           <div className={styles.top}>
             <div className={styles.title}>Bio</div>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui, blanditiis necessitatibus
-            nesciunt at magni expedita labore, explicabo, voluptate modi non ipsam alias obcaecati?
-            Illo quas, unde numquam iste autem impedit.
+            {description || 'Yet to provide bio information'}
           </div>
           <div className={styles.bottom}>
             <div className={styles.title}>Professional Background</div>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non quis corporis
-            reprehenderit molestias quisquam quos in obcaecati autem natus sunt quo voluptas unde
-            nisi vitae quasi, magnam eaque enim cum!
+            {qualification || 'Yet to provide educational qualifications'}
           </div>
         </div>
 
         <div className={styles.Segment}>
           <div className={styles.top}>
             <div className={styles.title}>Professional Development</div>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem delectus error
-            cumque debitis eos ab ratione, repellat consequuntur quibusdam ullam numquam consequatur
-            impedit distinctio dignissimos. Officiis cumque provident praesentium ipsa.
+            {certifications || 'Yet to provide Certification information'}
           </div>
           <div className={styles.bottom}>
             <div className={styles.title}>Curriculum Contributions</div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore ducimus veniam
-            consectetur totam modi sapiente maxime asperiores recusandae commodi fugit, doloribus,
-            tempora consequatur quas iure odio inventore dicta nemo? Dicta.
+            {contributions || 'Yet to provide details about contribution to curriculum development'}
           </div>
         </div>
       </div>
@@ -82,4 +121,4 @@ const StaffProfile = () => {
   );
 };
 
-export default StaffProfile;
+export default StaffProfilePage;

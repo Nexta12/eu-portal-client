@@ -14,6 +14,7 @@ import { HttpErrorStatusCode, getAxiosError } from '@utils/http';
 import useSWRMutation from 'swr/mutation';
 
 type StaffDetailsType = Pick<StudentProfile, 'firstName' | 'lastName' | 'email' | 'role'>;
+
 const defaultValues: StaffDetailsType = {
   firstName: '',
   lastName: '',
@@ -88,7 +89,7 @@ const EditStaff = () => {
           />
         )}
         <Card className="width-100 p-1">
-          <h2>Edit Staff</h2>
+          <h2>Edit Profile</h2>
           <FormWrapper
             className="d-flex flex-direction-column"
             form={form}

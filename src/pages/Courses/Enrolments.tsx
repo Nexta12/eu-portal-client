@@ -100,7 +100,7 @@ const Enrolments = () => {
             columns={columns}
             dataSource={courses}
             loading={isLoading}
-            emptyText="Student does not have any enrolled courses"
+            emptyText="Courses you enrolled for, will appear here"
           />
         </>
       ) : (

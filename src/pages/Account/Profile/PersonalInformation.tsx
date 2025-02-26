@@ -1,6 +1,8 @@
 import React from 'react';
 import { BsGenderAmbiguous } from 'react-icons/bs';
+import { LiaCitySolid } from 'react-icons/lia';
 import { LuMailbox } from 'react-icons/lu';
+import { PiSuitcaseSimpleLight } from 'react-icons/pi';
 import {
   RiCake2Line,
   RiCellphoneLine,
@@ -8,9 +10,7 @@ import {
   RiMailLine,
   RiRoadMapLine
 } from 'react-icons/ri';
-import { PiSuitcaseSimpleLight } from 'react-icons/pi';
 import { SiGoogleclassroom } from 'react-icons/si';
-import { LiaCitySolid } from 'react-icons/lia';
 import { useNavigate } from 'react-router-dom';
 import { Card, Col, Row } from 'antd';
 import { paths } from '@routes/paths';

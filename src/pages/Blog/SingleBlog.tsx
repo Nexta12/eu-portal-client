@@ -22,7 +22,13 @@ const SingleBlog = () => {
     <PageLayout className="lh-md" siteTitle="Blog:Slug">
       <div className={styles.singleBlogPage}>
         <div className={styles.postContainer}>
-          <img className={styles.singleImage} src={blog?.blogImage || blogImage1} alt="blogImage" />
+          <div className={styles.SingleImageContainer}>
+            <img
+              className={styles.singleImage}
+              src={blog?.blogImage || blogImage1}
+              alt="blogImage"
+            />
+          </div>
           <h1 className={styles.singletitle}>{blog?.title}</h1>
           <div className={styles.authorDate}>
             <span>

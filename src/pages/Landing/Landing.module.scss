@@ -53,3 +53,15 @@
     margin-bottom: 60px;
   }
 }
+.recentPosts {
+  margin-top: 60px;
+  .sectionTitle {
+    @extend %sharedSectionTitle;
+    width: 245px;
+  }
+
+  .grid {
+    @extend %sharedGrid;
+    margin-bottom: 90px;
+  }
+}

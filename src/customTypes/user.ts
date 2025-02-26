@@ -15,6 +15,15 @@ export enum Gender {
   UNDISCLOSED = 'undisclosed'
 }
 
+export enum Titles {
+  MR = 'Mr',
+  Mrs = 'Mrs',
+  Master = 'Master',
+  Doctor = 'Dr',
+  Prof = 'Prof',
+  Engnr = 'Engnr'
+}
+
 export enum AdmissionStatus {
   APPLICATION = 'application',
   APPLICATION_FEE_PAID = 'application_fee_paid',
@@ -50,8 +59,9 @@ export type StudentDocument = {
 
 export interface StudentProfile {
   userId: string;
+  title: string;
   firstName: string;
-  middleName: string;
+  middleName?: string;
   lastName: string;
   email: string;
   isPasswordGenerated?: boolean;
@@ -86,7 +96,7 @@ export interface StaffProfile {
   location?: string;
   portfolio?: string;
   department: string;
-  profilePicture:string;
+  profilePicture: string;
   quote?: string;
   description?: string;
   qualification?: string;

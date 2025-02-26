@@ -12,15 +12,17 @@ interface BlogCardProps {
 
 export const BlogCard: React.FC<BlogCardProps> = ({ item }) => (
   <div className={styles.singleCard}>
-    <div className={styles.imgContainer}>
-      <img className={styles.blogImage} src={item.blogImage || blogImage1} alt="blogImage" />
-    </div>
+    <a href={`${paths.blogs}/${item.slug}`} className={styles.link}>
+      <div className={styles.imgContainer}>
+        <img className={styles.blogImage} src={item.blogImage || blogImage1} alt="blogImage" />
+      </div>
+    </a>
     <div className={styles.blogBody}>
       <p className={styles.category}>{capitalizeWords(item.category.title)}</p>
       <a href={`${paths.blogs}/${item.slug}`} className={styles.link}>
         <p className={styles.title}>{item.title}</p>
       </a>
-      <p className={styles.content}>{item.snippet}...</p>
+      <p className={styles.content}>{item.content?.slice(0, 400)}...</p>
       <div className={styles.authorSection}>
         <img
           className={styles.authorImg}

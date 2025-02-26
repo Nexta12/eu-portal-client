@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Dispatch, SetStateAction, useMemo } from 'react';
+import React, { ChangeEvent, Dispatch, SetStateAction, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Form } from 'antd';
 import dayjs from 'dayjs';
@@ -14,7 +14,7 @@ import {
   TextAreaField
 } from '@components/Form';
 import { Programme } from '@customTypes/courses';
-import { Cohort, EmploymentStatus, Gender, StudentProfile } from '@customTypes/user';
+import { Cohort, EmploymentStatus, Gender, StudentProfile, Titles } from '@customTypes/user';
 import { ApplicationSteps } from '@pages/Admission/Apply/Apply';
 import { paths } from '@routes/paths';
 import { formatUSDollar } from '@utils/currencyFormatter';
@@ -25,6 +25,11 @@ import useSWRMutation from 'swr/mutation';
 import styles from './Apply.module.scss';
 
 export const cohortOptions = [
+  {
+    label: 'Select One',
+    value: '',
+    disabled: true
+  },
   {
     label: 'Certificate',
     value: Cohort.CERTIFICATE
@@ -49,6 +54,14 @@ export const genderOptions = [
   { value: Gender.UNSPECIFIED, label: 'Unspecified' },
   { value: Gender.UNDISCLOSED, label: 'Undisclosed' }
 ];
+export const titleOptions = [
+  { value: Titles.MR, label: 'Mr.' },
+  { value: Titles.Mrs, label: 'Mrs.' },
+  { value: Titles.Master, label: 'Master.' },
+  { value: Titles.Doctor, label: 'Dr.' },
+  { value: Titles.Prof, label: 'Prof.' },
+  { value: Titles.Engnr, label: 'Engnr.' }
+];
 
 const employmentStatusOptions = [
   { value: EmploymentStatus.UNEMPLOYED, label: 'Unemployed' },
@@ -63,6 +76,7 @@ const nationalityOptions = nationalityList.map((nationality) => ({
 }));
 
 const defaultValues: Partial<StudentProfile> = {
+  title: Titles.MR,
   firstName: '',
   lastName: '',
   email: '',
@@ -85,6 +99,7 @@ interface ApplicationFormProps {
 
 const ApplicationForm = ({ setCurrentStep, setStudentEmail }: ApplicationFormProps) => {
   const [form] = Form.useForm();
+  const [selectedProgramme, setSelectedProgramme] = useState<Programme | null>(null);
   const [newStudent, setNewStudent] = React.useState<StudentProfile>(
     defaultValues as StudentProfile
   );
@@ -102,7 +117,6 @@ const ApplicationForm = ({ setCurrentStep, setStudentEmail }: ApplicationFormPro
     const response = await apiClient.get<Programme[]>(url);
     return response.data;
   });
-
   const programmesOptions = useMemo(
     () =>
       data?.map((programme) => ({
@@ -116,8 +130,11 @@ const ApplicationForm = ({ setCurrentStep, setStudentEmail }: ApplicationFormPro
     const { name, value } = event.target;
     setNewStudent({ ...newStudent, [name]: value });
   };
-
   const handleOnSelect = (name: string, value: string) => {
+    if (name === 'programme') {
+      const selected = data?.find((programme) => programme.id === value);
+      setSelectedProgramme(selected || null);
+    }
     setNewStudent({ ...newStudent, [name]: value });
   };
 
@@ -148,11 +165,27 @@ const ApplicationForm = ({ setCurrentStep, setStudentEmail }: ApplicationFormPro
     }
   };
 
+  const getFilteredCohortOptions = () => {
+    if (!selectedProgramme) return cohortOptions;
+
+    return cohortOptions.filter(
+      (option) =>
+        (option.value === Cohort.CERTIFICATE && selectedProgramme.isCertificate) ||
+        (option.value === Cohort.DIPLOMA && selectedProgramme.isDiploma) ||
+        (option.value === Cohort.DEGREE && selectedProgramme.isDegree) ||
+        (option.value === Cohort.POSTGRADUATE && selectedProgramme.isPostgraduate)
+    );
+  };
+
   const handleSubmit = async () => {
     try {
       await trigger();
       setStudentEmail(newStudent.email);
       setCurrentStep(ApplicationSteps.SUCCESS);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     } catch {
       setCurrentStep(ApplicationSteps.FAILURE);
     }
@@ -176,6 +209,14 @@ const ApplicationForm = ({ setCurrentStep, setStudentEmail }: ApplicationFormPro
         initialValues={defaultValues}
       >
         <div className={styles.threeRowGrid}>
+          <SelectField
+            options={titleOptions}
+            label="Title"
+            name="title"
+            value={newStudent.title}
+            defaultValue={newStudent.title}
+            onSelect={(value) => handleOnSelect('title', value)}
+          />
           <InputField
             placeholder="First Name"
             label="First Name"
@@ -183,14 +224,6 @@ const ApplicationForm = ({ setCurrentStep, setStudentEmail }: ApplicationFormPro
             value={newStudent.firstName}
             onChange={onChange}
             rules={[{ required: true }]}
-          />
-
-          <InputField
-            placeholder="Middle Name"
-            label="Middle Name"
-            name="middleName"
-            value={newStudent.middleName}
-            onChange={onChange}
           />
           <InputField
             placeholder="Last Name"
@@ -295,14 +328,6 @@ const ApplicationForm = ({ setCurrentStep, setStudentEmail }: ApplicationFormPro
             rows={2}
           />
           <SelectField
-            options={cohortOptions}
-            label="Cohort"
-            name="cohort"
-            value={newStudent.cohort}
-            onSelect={(value) => handleOnSelect('cohort', value)}
-            rules={[{ required: true }]}
-          />
-          <SelectField
             options={programmesOptions || []}
             label="Programme"
             loading={isLoading}
@@ -310,6 +335,14 @@ const ApplicationForm = ({ setCurrentStep, setStudentEmail }: ApplicationFormPro
             name="programme"
             value={newStudent.programme}
             onSelect={(value) => handleOnSelect('programme', value)}
+            rules={[{ required: true }]}
+          />
+          <SelectField
+            options={getFilteredCohortOptions()}
+            label="Cohort"
+            name="cohort"
+            value={newStudent.cohort}
+            onSelect={(value) => handleOnSelect('cohort', value)}
             rules={[{ required: true }]}
           />
         </div>

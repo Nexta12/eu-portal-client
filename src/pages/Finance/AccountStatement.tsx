@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import useSWR from 'swr';
 import apiClient from '@api/apiClient';
 import { endpoints } from '@api/endpoints';
-import { DownloadButton } from '@components/Button';
+// import { DownloadButton } from '@components/Button';
 import { DashboardContentLayout } from '@components/Layout';
 import { AntTable } from '@components/Table';
 import { formatNaira } from '@utils/currencyFormatter';
@@ -74,9 +74,9 @@ const AccountStatement = () => {
 
   return (
     <DashboardContentLayout title="Account Statement">
-      <div className="d-flex justify-content-end">
+      {/* <div className="d-flex justify-content-end">
         <DownloadButton text="Download Statement" />
-      </div>
+      </div> */}
       {error && (
         <Alert message="Error" description="Failed to fetch account statement" type="error" />
       )}

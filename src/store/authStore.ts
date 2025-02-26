@@ -42,8 +42,8 @@ export const getLoginPath = (user: LoggedInUser) =>
   user.role === UserRole.staff || user.role === UserRole.admin
     ? paths.adminDashboard
     : isApplicationInProgress(user)
-      ? paths.applicationProcess
-      : paths.dashboardHome;
+    ? paths.applicationProcess
+    : paths.dashboardHome;
 
 const handleLogin = async (
   loginDetails: LoginDetails,
@@ -65,7 +65,7 @@ const handleLogin = async (
     const { statusCode } = getAxiosError(err);
     const errorMessage =
       statusCode === HttpErrorStatusCode.BAD_REQUEST ||
-        statusCode === HttpErrorStatusCode.UNPROCESSABLE_ENTITY
+      statusCode === HttpErrorStatusCode.UNPROCESSABLE_ENTITY
         ? 'Invalid login credentials'
         : 'Something went wrong';
     set({ error: errorMessage, isLoading: false });

@@ -23,6 +23,7 @@ const NoRegisteredSemester = ({ setMessage }: EmptyContentProps) => {
     try {
       await trigger();
       setMessage({ error: null, success: 'Semester registration successful' });
+      window.location.reload();
     } catch (err) {
       setMessage({ error: formatErrors(getAxiosError(err).errorData), success: null });
     }

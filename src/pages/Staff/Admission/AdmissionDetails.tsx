@@ -88,7 +88,7 @@ const AdmissionDetails = () => {
               <Row gutter={[24, 24]} className={styles.personalInfo}>
                 <Col sm={24} lg={18}>
                   <Row gutter={[24, 24]}>
-                    <InfoDisplay value="Mr/Mrs" label="Title" lg={8} />
+                    <InfoDisplay value={studentDetails.title} label="Title" lg={8} />
                     <InfoDisplay value={studentDetails.firstName} label="First Name" lg={8} />
                     <InfoDisplay value={studentDetails.lastName} label="Last Name" lg={8} />
                     <InfoDisplay value={studentDetails.gender} label="Gender" lg={8} />

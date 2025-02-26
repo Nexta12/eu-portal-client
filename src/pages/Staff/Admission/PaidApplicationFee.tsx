@@ -93,7 +93,7 @@ const ApplicantsPaidApplicationFee = () => {
   return (
     <DashboardContentLayout
       title="Paid Application fee"
-      description="These are Learners have paid processing fee but haven't uploaded documents (ineligible for admmission)"
+      description="These are Learners who have paid processing fee but haven't uploaded documents (ineligible for admmission)"
     >
       <AntTable columns={Column} dataSource={students} loading={isLoading} />
     </DashboardContentLayout>

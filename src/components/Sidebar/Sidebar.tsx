@@ -175,6 +175,7 @@ const getStaffSidebarItems = (
   ticketCount: number,
   totalUnreadChats: number,
   unreadMessagesCount: number,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   user: any
 ): MenuProps['items'] => {
   const handleOnClick = (path: string) => {
@@ -203,11 +204,11 @@ const getStaffSidebarItems = (
           key: 'in_reviw',
           onClick: () => handleOnClick(paths.inreviewList)
         }),
-        getItem({
-          label: 'Rejected',
-          key: 'rejected_applicat',
-          onClick: () => handleOnClick(paths.rejectList)
-        }),
+        // getItem({
+        //   label: 'Rejected',
+        //   key: 'rejected_applicat',
+        //   onClick: () => handleOnClick(paths.rejectList)
+        // }),
         getItem({
           label: 'Paid Application Fee',
           key: 'paid_feee',

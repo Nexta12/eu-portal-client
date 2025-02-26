@@ -15,14 +15,18 @@ const fetcher = async (url: string) => {
 const Blogs: React.FC = () => {
   const { data: blogs } = useSWR(endpoints.getBlogs, fetcher);
   return (
-    <PageLayout className="lh-md" siteTitle="Blog Posts">
-      <h2 className={styles.pageTitle}>Recent Posts</h2>
-      <div className={styles.blogCards}>
-        {blogs?.map((item) => (
-          <BlogCard item={item} key={item.id} />
-        ))}
+    <div>
+      <div className={styles.pageHeader}>
+        <h3 className={styles.pageTitle}> Recent Posts</h3>
       </div>
-    </PageLayout>
+      <PageLayout className="lh-md" siteTitle="Blog Posts">
+        <div className={styles.blogCards}>
+          {blogs?.map((item) => (
+            <BlogCard item={item} key={item.id} />
+          ))}
+        </div>
+      </PageLayout>
+    </div>
   );
 };
 

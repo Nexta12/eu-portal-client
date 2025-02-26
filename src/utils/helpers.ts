@@ -1,8 +1,8 @@
 import dayjs from 'dayjs';
+import { SupportTicketStatus } from '@customTypes/tickets';
 import { AdmissionStatus, UserRole } from '@customTypes/user';
 import { LoggedInUser } from '@store/authStore';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
-import { SupportTicketStatus } from '@customTypes/tickets';
 
 export const isApplicationInProgress = (currentUser: LoggedInUser) =>
   currentUser.admissionStatus === AdmissionStatus.APPLICATION ||
@@ -62,10 +62,7 @@ export const capitalizeWords = (str: string) => str.replace(/\b\w/g, (char) => c
 
 type Styles = { [key: string]: string };
 
-export const getStatusClass = (
-  styles: Styles,
-  status?: SupportTicketStatus | string
-): string => {
+export const getStatusClass = (styles: Styles, status?: SupportTicketStatus | string): string => {
   switch (status) {
     case SupportTicketStatus.OPEN: {
       return styles['status-open'];

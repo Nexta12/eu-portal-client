@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Alert, Card, Form } from 'antd';
 import apiClient from '@api/apiClient';
 import { endpoints } from '@api/endpoints';
@@ -17,7 +17,7 @@ export const defaultNewCourse = {
   unit: 0,
   costUsd: 0,
   description: '',
-  cohort: Cohort.CERTIFICATE,
+  cohort: Cohort.DEGREE,
   level: Level.ONE_HUNDRED_LEVEL,
   programme: '',
   semester: Semester.FIRST,
@@ -33,13 +33,13 @@ const NewCourse = () => {
     return response.data;
   });
 
-  useEffect(() => {
-    form.setFieldsValue({
-      cohort: Cohort.CERTIFICATE,
-      level: Level.ONE_HUNDRED_LEVEL,
-      semester: Semester.FIRST
-    });
-  }, [form, values]);
+  // useEffect(() => {
+  //   form.setFieldsValue({
+  //     cohort: Cohort.CERTIFICATE,
+  //     level: Level.ONE_HUNDRED_LEVEL,
+  //     semester: Semester.FIRST
+  //   });
+  // }, [form, values]);
 
   const handleCreateCourse = async () => {
     try {

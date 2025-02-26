@@ -5,13 +5,7 @@ import styles from './Profile.module.scss';
 
 type EditBasicInfo = Pick<
   StaffProfile,
-  | 'firstName'
-  | 'middleName'
-  | 'lastName'
-  | 'portfolio'
-  | 'department'
-  | 'location'
-  | 'quote'
+  'firstName' | 'middleName' | 'lastName' | 'portfolio' | 'department' | 'location' | 'quote'
   // | 'phoneNumber'
   // | 'address'
 >;

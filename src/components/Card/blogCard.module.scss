@@ -1,31 +1,37 @@
+.pageHeader {
+    height: 400px;
+    background-image: url('../../assets/images/stackedbooks.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    display: flex;
+}
+
 .pageTitle {
-    text-align: center;
-    font-weight: bold;
-    font-size: 15px;
-    margin-top: -30px;
-    margin-bottom: 10px;
+    font-size: 55px;
+    margin: auto;
 }
 
 .blogCards {
     display: grid !important;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
     align-items: flex-start;
 }
 
 .imgContainer {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    padding: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .blogImage {
-    width: inherit;
-    height: inherit;
-    object-fit: cover;
+  width: 80%;
+  height: 70%;
+  object-fit: contain;
 }
 
 .singleCard {
@@ -40,8 +46,10 @@
 }
 
 .blogBody {
-    padding: 5px;
+    padding: 8px;
     align-items: center;
+    background-color: green;
+    color: #fff;
 }
 
 
@@ -51,14 +59,19 @@
 }
 
 .title {
-    font-size: 13px;
+    font-size: 16px;
     font-weight: bold;
-    color: blue;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: underline;
 
 }
 
 .content {
-    font-size: 12px;
+    font-size: 14px;
+    text-align: left;
+    word-spacing: 2px;
 }
 
 .authorSection {
@@ -86,12 +99,10 @@
 
 .time {
     font-size: 10px;
-    margin-top: -6px;
 }
 
 .singleBlogPage {
     width: 100%;
-    margin-top: -50px !important;
     display: flex;
     justify-content: center;
 
@@ -102,16 +113,28 @@
     margin: 0 auto;
 }
 
-.singleImage {
+.SingleImageContainer{
+    display: flex;
     width: 100%;
-    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
     height: 500px;
-    object-fit: cover;
+}
+
+.singleImage {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    max-height: 500px;
+    object-fit: contain;
 }
 
 .singletitle {
-    font-size: 20px;
-    margin: 10px 0px;
+    font-size: 30px;
+    margin: 20px 0px;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 .authorDate {
@@ -122,20 +145,12 @@
 
 @media only screen and (max-width: 820px) {
     .blogCards {
-        grid-template-columns: repeat(3, 1fr);
-
-    }
-}
-
-@media only screen and (max-width: 770px) {
-    .blogCards {
         grid-template-columns: repeat(2, 1fr);
 
     }
 }
 
-
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 770px) {
     .blogCards {
         grid-template-columns: repeat(1, 1fr);
 

@@ -26,7 +26,7 @@ export const DashboardContentLayout = ({
   <div className={cn('mx-2', { [className]: className })}>
     <div className="my-2">
       <ReactHelmet title={siteTitle || fallbackSiteTitle} />
-      {preTitle && <AntTag color="red" text={preTitle} className="mb-1" />}
+      {preTitle && <AntTag color="green" text={preTitle} className="mb-1" />}
       {title && (
         <>
           <h1 className="font-weight-bolder mb-0">{title}</h1>

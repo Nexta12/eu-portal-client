@@ -23,7 +23,7 @@ const Login = () => {
       email: values.email,
       password: values.password
     };
-     await login(data, navigate);
+    await login(data, navigate);
   };
 
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {

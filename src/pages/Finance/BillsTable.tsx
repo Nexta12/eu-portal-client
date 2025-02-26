@@ -153,7 +153,7 @@ export const BillsTable = ({ setMessage }: BillsTableProps) => {
           <Button
             type="primary"
             onClick={() => initialBillPayment(bill)}
-            disabled={hasCompulsoryFee && !compulsoryBills.has(bill.type)}
+            disabled={hasCompulsoryFee && compulsoryBills.has(bill.type)}
           >
             Pay
           </Button>

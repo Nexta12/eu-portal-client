@@ -1,4 +1,3 @@
-
 export const AfricanLanguages = [
   'Welcome to eUniversity Africa',
   'Ekaabo si eUniversity Afrika',
@@ -15,4 +14,9 @@ export const AfricanLanguages = [
   'Bem-vindo à eUniversidade África'
 ];
 
-export const animations = ['slideInFromTop', 'slideInFromBottom', 'slideInFromLeft', 'slideInFromRight'];
+export const animations = [
+  'slideInFromTop',
+  'slideInFromBottom',
+  'slideInFromLeft',
+  'slideInFromRight'
+];

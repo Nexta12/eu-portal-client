@@ -1,6 +1,6 @@
 import React from 'react';
 // import explore1 from '@assets/images/explore3.jpg';
- import cover from '@assets/images/eua-cover.png';
+import cover from '@assets/images/eua-cover.png';
 import styles from './Explore.module.scss';
 
 export const Explore = () => (

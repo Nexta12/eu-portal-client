@@ -60,6 +60,7 @@ const UploadDocuments = () => {
       switch (info.file.status) {
         case 'done': {
           message.success(`${info.file.name} file uploaded successfully.`);
+          window.location.reload();
           break;
         }
         case 'error': {
@@ -81,6 +82,7 @@ const UploadDocuments = () => {
             });
           }
           message.success(`${info.file.name} file removed.`);
+          window.location.reload();
           break;
         }
       }
@@ -145,11 +147,8 @@ const UploadDocuments = () => {
         <Upload {...uploadPictureProps}>
           <div>
             <AiOutlinePlus />
-            <div style={{ marginTop: 4, fontSize: '10px' }}>
-              Click Here to
-              <br />
-              Upload Profile
-              <br /> Picture
+            <div style={{ marginTop: 4, fontSize: '10px' }} title="Required">
+              Upload Profile Picture <span style={{ color: 'red', fontSize: '20px' }}>*</span>
             </div>
           </div>
         </Upload>

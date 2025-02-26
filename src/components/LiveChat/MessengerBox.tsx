@@ -6,9 +6,9 @@ import { endpoints } from '@api/endpoints';
 import { FormWrapper } from '@components/Form';
 import { SuccessResponse } from '@customTypes/general';
 import { Livechat } from '@customTypes/livechat';
+import { useSocket } from '@hooks/useSocket';
 import { formatDate } from '@utils/helpers';
 import { getLocalStorageItem } from '@utils/localStorage';
-import { useSocket } from '@hooks/useSocket';
 import useSWRMutation from 'swr/mutation';
 import styles from './LiveChat.module.scss';
 

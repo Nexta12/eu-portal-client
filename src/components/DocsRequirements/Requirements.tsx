@@ -40,7 +40,7 @@ const Requirements: React.FC<RequirementsProps> = ({ requirements }) => (
     <Card type="inner" title="Required Documents" className={styles.requirementList}>
       {displayItems(requirements)}
       <div className="text-right">
-        <span>*</span>
+        <span className={styles.asteric}>*</span>
         (Required)
       </div>
     </Card>

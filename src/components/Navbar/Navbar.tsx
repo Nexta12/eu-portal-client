@@ -59,13 +59,21 @@ export const Navbar = () => {
   const { isSticky, stickyRef } = useSticky();
   const navigate = useNavigate();
 
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <div className={cn(styles.navbarContainer, { [styles.sticky]: isSticky })} ref={stickyRef}>
       <div className={isSticky ? styles.stickyNavItemsSection : styles.navItemsSection}>
         <img src={euaLogo} className={styles.logo} alt="eUniversity logo" />
         <div className={styles.navItems}>
           <DropdownMenu>
-            <div onClick={() => navigate(paths.index)}>Home</div>
+            <div onClick={() => handleNavigation(paths.index)}>Home</div>
           </DropdownMenu>
           <DropdownMenu items={ABOUT_MENU}>
             <div>About eUA</div>
@@ -74,18 +82,24 @@ export const Navbar = () => {
             <div>Admission</div>
           </DropdownMenu>
           <DropdownMenu>
-            <div onClick={() => navigate(paths.contactUs)}>Contact us</div>
+            {/* <div onClick={() => navigate(paths.contactUs)}>Contact us</div> */}
+            <div onClick={() => handleNavigation(paths.contactUs)}>Contact us</div>
           </DropdownMenu>
           <DropdownMenu>
-            <div onClick={() => navigate(paths.blogs)}>Blogs</div>
+            <div onClick={() => handleNavigation(paths.blogs)}>Blogs</div>
           </DropdownMenu>
         </div>
       </div>
       <div className={styles.navActionButtons}>
-        <Button type="primary" onClick={() => navigate(paths.login)}>
+        <Button type="primary" onClick={() => handleNavigation(paths.login)}>
           LOGIN
         </Button>
-        <Button type="primary" ghost className={styles.ghost} onClick={() => navigate(paths.apply)}>
+        <Button
+          type="primary"
+          ghost
+          className={styles.ghost}
+          onClick={() => handleNavigation(paths.apply)}
+        >
           APPLY
         </Button>
       </div>

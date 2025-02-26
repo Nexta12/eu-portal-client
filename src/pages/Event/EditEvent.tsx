@@ -72,7 +72,10 @@ const EditEvent: React.FC = () => {
   }, [event, form]);
 
   return (
-    <DashboardContentLayout title="Edit activity" description="Edit an activity by filling the form">
+    <DashboardContentLayout
+      title="Edit activity"
+      description="Edit an activity by filling the form"
+    >
       <div className="d-flex flex-direction-column gap-2 p-2 align-items-center">
         {(message.success || message.error) && (
           <Alert

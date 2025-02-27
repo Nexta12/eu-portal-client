@@ -1,31 +1,64 @@
 name: Deployment Workflow
-env:
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
 on:
   workflow_run:
-    workflows: [ "Integration Workflow" ]
+    workflows: ['Integration Workflow']
     types:
       - completed
   push:
     branches-ignore:
       - main
+
 jobs:
-  Deploy-Preview:
-    name: Deploy Preview to Vercel
+  deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: Install Vercel CLI
-        run: yarn add vercel@latest --global
+      - name: Set up SSH connection
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.USER_NAME }}
+          key: ${{ secrets.SEVER_SSH_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            set -e
 
-      - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+            echo "Changing directory to /www/wwwroot/clients/euclient"
+            if ! cd /www/wwwroot/clients/euclient; then
+              echo "Failed to change directory as required"
+              exit 1
+            fi
 
-      - name: Build Project Artifacts
-        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+            echo "Pulling latest code from origin/main"
+            if ! git pull origin main; then
+              echo "Failed to pull latest code"
+              exit 1
+            fi
 
-      - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+            echo "Installing dependencies with Yarn"
+            if ! yarn install; then
+              echo "Couldn't install packages with Yarn"
+              exit 1
+            fi
+
+            # echo "Building for production"
+            # if ! yarn build; then
+            #   echo "Couldn't build project"
+            #   exit 1
+            # fi
+
+            # echo "Starting production server with PM2"
+            # if ! yarn deploy; then
+            #   echo "Couldn't start production with PM2"
+            #   exit 1
+            # fi
+
+            echo "Deployment successful"

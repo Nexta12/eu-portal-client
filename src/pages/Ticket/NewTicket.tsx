@@ -20,7 +20,8 @@ const NewTicket = () => {
   const [message, setMessage] = useState<AlertMessage>({ error: null, success: null });
 
   useEffect(() => {
-    const socketInstance = io('ws://185.170.196.112/:4000');
+    const serverUrl = process.env.REACT_APP_WS_SERVER || 'ws://0.0.0.0:4000';
+    const socketInstance = io(serverUrl);
     setSocket(socketInstance);
     return () => {
       socketInstance.disconnect();
